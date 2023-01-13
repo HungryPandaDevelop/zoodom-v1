@@ -31,27 +31,17 @@ import ForgotPassword from 'pages/cabinet/auth/ForgotPassword';
 import Registration from 'pages/cabinet/auth/Registration';
 
 
+import RedirectAccount from 'pages/cabinet/account/RedirectAccount';
 import Account from 'pages/cabinet/account/Account';
 import AccountEdit from 'pages/cabinet/account/AccountEdit';
-
-
-
 
 
 import Cards from 'pages/cabinet/cards/Cards';
 import CardsNew from 'pages/cabinet/cards/CardsNew';
 import CardsEdit from 'pages/cabinet/cards/CardsEdit';
 
-
-
-
 import Liked from 'pages/cabinet/liked/Liked';
 import Hidden from 'pages/cabinet/hidden/Hidden';
-
-
-import Pages from 'pages/cabinet/pages/Pages';
-import PagesNew from 'pages/cabinet/pages/PagesNew';
-import PagesEdit from 'pages/cabinet/pages/PagesEdit';
 
 // Страницы Елементов Вакансии\ Резюме
 import Catalog from 'pages/catalog/Catalog';
@@ -85,10 +75,11 @@ const App = () => {
 
         
           {/*  Страницы кабинет  */}
-            <Route path='/cabinet' element={<PrivateRoute/>}>
-              <Route index  element={<Account/>}></Route>
+            <Route path='/cabinet/' element={<PrivateRoute/>}>
+              <Route index  element={<RedirectAccount/>}></Route>
+              <Route path='/cabinet/account/'  element={<Account/>}></Route>
     
-              <Route path='/cabinet/account-edit' element={<AccountEdit/>}></Route>
+              <Route path='/cabinet/account-edit/' element={<AccountEdit/>}></Route>
 
               <Route path='/cabinet/liked/' element={<Liked/>}></Route>
               <Route path='/cabinet/hidden/' element={<Hidden/>}></Route>
@@ -103,16 +94,9 @@ const App = () => {
 
 
 
-              <Route path='/cabinet/cards' element={<Cards/>}></Route>
-              <Route path='/cabinet/cards-new' element={<CardsNew/>}></Route>
-              <Route path='/cabinet/cards-edit/:elementId' element={<CardsEdit/>}></Route>
-
-
-              <Route path='/cabinet/pages' element={<Pages/>}></Route>
-              <Route path='/cabinet/pages-new' element={<PagesNew/>}></Route>
-              <Route path='/cabinet/pages-edit/:elementId' element={<PagesEdit/>}></Route>
-
-
+              <Route path='/cabinet/:rubricId' element={<Cards/>}></Route>
+              <Route path='/cabinet/:rubricId-new' element={<CardsNew/>}></Route>
+              <Route path='/cabinet/:rubricId-edit/:elementId' element={<CardsEdit/>}></Route>
 
             </Route> 
           {/*  Страницы кабинет  */}

@@ -17,7 +17,6 @@ const CardsItem = ({ listing }) => {
   let coords;
   if (listing.cards_coords) {
     coords = listing.cards_coords.split('--');
-    console.log(coords[0])
 
   }
 

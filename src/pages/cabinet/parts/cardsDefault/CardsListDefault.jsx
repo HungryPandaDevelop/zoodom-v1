@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 import PreloaderList from 'pages/cabinet/parts/PreloaderList';
 import EmptyList from 'pages/cabinet/parts/EmptyList';
 
-const CardsListDefault = ({ uid, cabinetType, nameList, whatshow }) => {
+const CardsListDefault = ({ uid, cabinetType, nameList, whatshow, whatshowName, titleForm }) => {
 
   const [loading, setLoading] = useState(true);
 
@@ -28,9 +28,9 @@ const CardsListDefault = ({ uid, cabinetType, nameList, whatshow }) => {
 
     getListing(nameList, uid).then(res => {
       if (isMounted) {
-        console.log(res)
-        res.sort((a, b) => a.data.name > b.data.name ? 1 : -1)
-        console.log(res)
+
+        res.sort((a, b) => a.card_name > b.card_name ? 1 : -1)
+
         setListings(res);
         // console.log(res.length, accountInfo.currentCard)
 
@@ -42,7 +42,7 @@ const CardsListDefault = ({ uid, cabinetType, nameList, whatshow }) => {
 
 
     return () => { isMounted = false };
-  }, []);
+  }, [nameList]);
 
   const deleteItem = (listings, id) => {
     onDeleteCards(listings, id, nameList).then(res => {
@@ -62,7 +62,7 @@ const CardsListDefault = ({ uid, cabinetType, nameList, whatshow }) => {
   return (
     <>
       <TemplateAccount
-        title='Все специализации'
+        title={titleForm}
         cabinetType={cabinetType}
         addWrapClass='cards-account-container'
         showAddBtn={true}
@@ -81,11 +81,18 @@ const CardsListDefault = ({ uid, cabinetType, nameList, whatshow }) => {
 
             <table>
               <tbody>
+                <tr>
+                  {whatshowName.map((item, index) => (
+                    <th key={index}>{item}</th>
+                  ))}
+                  <th>Обновлено</th>
+                  <th>Действия</th>
+                </tr>
                 {
                   listings.map((listing) => (
                     <tr key={listing.id}>
                       <CardsItemDefault
-                        listing={listing.data}
+                        listing={listing}
                         id={listing.id}
                         onEdit={() => onEdit(listing.id)}
                         onDelete={() => deleteItem(listings, listing.id)}
@@ -109,9 +116,9 @@ const CardsListDefault = ({ uid, cabinetType, nameList, whatshow }) => {
 
 const mapStateToProps = (state) => {
   return {
-    uid: state.accountInfo.info.uid,
+    uid: state.accountInfo.uid,
     accountInfo: state.accountInfo.info,
-    cabinetType: state.accountInfo.info.typeCabinet,
+    cabinetType: state.accountInfo.typeCabinet,
   }
 }
 

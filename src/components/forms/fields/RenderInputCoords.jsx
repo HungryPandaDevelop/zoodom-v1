@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from 'react';
 
 const TemplateCoords = (props) => {
 
-  const { input, label, labelSecond } = props;
+  const { input, label, labelSecond, num } = props;
 
   const elRef = useRef();
   const originRef = useRef();
@@ -52,6 +52,7 @@ const TemplateCoords = (props) => {
 
   return (
     <div className='map-input'>
+      {num && <i className="num-offset">{num}</i>}
       {label && <label className="col-12"><b>{label}</b><span>{labelSecond}</span></label>}
       <input
         ref={originRef}

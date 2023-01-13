@@ -95,7 +95,7 @@ const Reviews = ({
     for (let i = 0; i < 5; i++) {
       stars.push(<i
         key={i}
-        className={`star-ico star-ico--gray ${Number(item.grade) - 1 >= i && 'active'}`}
+        className={`star-ico star-ico--green ${Number(item.grade) - 1 >= i && 'active'}`}
       ></i>)
     }
 

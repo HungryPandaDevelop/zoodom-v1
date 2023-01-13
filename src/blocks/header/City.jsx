@@ -68,11 +68,6 @@ const City = ({ russianCities }) => {
     )) : (<li>Список пуст</li>);
   }
 
-
-  // const forgetMe = () => {
-  //   console.log('forgetMe me')
-  //   localStorage.removeItem('rememberMe');
-  // }
   return (
     <>
       <div className="vertical-align col-2 hidden-lg hidden-md hidden-sm hidden-xs">
@@ -117,7 +112,7 @@ const City = ({ russianCities }) => {
 
     </>
 
-  )
+  );
 }
 
 

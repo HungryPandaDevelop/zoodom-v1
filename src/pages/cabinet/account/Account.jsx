@@ -17,7 +17,6 @@ const Account = ({ userInfo }) => {
 
 
 
-
   return (
     <>
       <TemplateAccount title="Учетная запись" >

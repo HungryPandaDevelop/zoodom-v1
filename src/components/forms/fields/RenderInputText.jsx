@@ -1,7 +1,7 @@
 import { Field } from 'redux-form';
 import { useEffect } from 'react';
 
-import { required, minLength, mailCheck } from 'components/forms/validator';
+import { required, minLength } from 'components/forms/validator';
 
 const TempateInputText = (props) => {
 
@@ -13,6 +13,7 @@ const TempateInputText = (props) => {
     labelSecond,
     checkErrorSubmit,
     setErrCheck,
+    num,
     meta: {
       error,
     }
@@ -29,7 +30,9 @@ const TempateInputText = (props) => {
 
   return (
     <>
-      {label && <label><b>{label}</b> {labelSecond && <span>{labelSecond}</span>}</label>}
+      {num && <i className="num-offset">{num}</i>}
+      {label && <label><b>{label}</b></label>}
+      {labelSecond && <div className='hint-input-file'><i><span>{labelSecond}</span></i></div>}
       <input
         {...input}
         type="text"
@@ -44,14 +47,14 @@ const TempateInputText = (props) => {
 
 
 
-const RenderInputText = ({ name, placeholder, label, checkErrorSubmit, setErrCheck, validate }) => {
+const RenderInputText = ({ name, placeholder, label, checkErrorSubmit, setErrCheck, validate, num }) => {
 
   let validateArr = [];
 
   validate && validate.map((item) => {
     if (item === 'required') { validateArr.push(required); }
-    else if (item === 'minLength') { validateArr.push(required); }
-    else if (item === 'mailCheck') { validateArr.push(required); }
+    else if (item === 'minLength') { validateArr.push(minLength); }
+
   })
 
   return <Field
@@ -62,6 +65,7 @@ const RenderInputText = ({ name, placeholder, label, checkErrorSubmit, setErrChe
     validate={validateArr}
     checkErrorSubmit={checkErrorSubmit}
     setErrCheck={setErrCheck}
+    num={num}
   />;
 }
 

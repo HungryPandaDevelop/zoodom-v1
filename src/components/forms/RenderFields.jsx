@@ -1,6 +1,9 @@
 import RenderTitle from './fields/RenderTitle';
 
 import RenderInputText from './fields/RenderInputText'; // поле стандартное
+import RenderInputCity from './fields/RenderInputCity'; // поле стандартное
+
+import RenderInputUserRef from './fields/RenderInputUserRef'; // поле стандартное userref
 
 import RenderInputStar from './fields/RenderInputStar'; // поле стандартное
 
@@ -23,6 +26,7 @@ import RenderInputList from './fields/RenderInputList'; // поле список
 import RenderInputMulty from './fields/RenderInputMulty'; // поле селект + текст
 
 import RenderInputFile from './fields/RenderInputFile'; // поле с добавлением поля! 
+import RenderInputFileDropZone from './fields/RenderInputFileDropZone'; // поле с добавлением поля! 
 
 import RenderInputFileVideo from './fields/RenderInputFileVideo'; // поле с добавлением поля! 
 
@@ -43,12 +47,20 @@ const RenderFields = ({ orderFields, objFields, checkErrorSubmit, setErrCheck })
   const choiseFieldType = (type, obj) => {
     switch (type) {
       case 'title':
-        return RenderTitle(obj.label);
+        return (
+          <>
+            <RenderTitle
+              label={obj.label}
+              num={obj.num}
+            />
+          </>
+        )
       case 'text':
         return (
           <>
             <RenderInputText
               name={obj.name}
+              num={obj.num}
               placeholder={obj.placeholder}
               label={obj.label}
               labelSecond={obj.labelSecond}
@@ -59,12 +71,38 @@ const RenderFields = ({ orderFields, objFields, checkErrorSubmit, setErrCheck })
             />
           </>
         );
+      case 'city':
+        return (
+          <>
+            <RenderInputCity
+              name={obj.name}
+              num={obj.num}
+              placeholder={obj.placeholder}
+              label={obj.label}
+              labelSecond={obj.labelSecond}
+              disabled={obj.disabled}
+              validate={obj.validate}
+              checkErrorSubmit={checkErrorSubmit}
+              setErrCheck={setErrCheck}
+            />
+          </>
+        );
+      case 'userRef':
+        return (
+          <>
+            <RenderInputUserRef
+              name={obj.name}
+              num={obj.num}
+            />
+          </>
+        );
       case 'star':
         return (
           <RenderInputStar
             name={obj.name}
             placeholder={obj.placeholder}
             label={obj.label}
+            num={obj.num}
           />
         );
       case 'date':
@@ -74,6 +112,7 @@ const RenderFields = ({ orderFields, objFields, checkErrorSubmit, setErrCheck })
             placeholder={obj.placeholder}
             label={obj.label}
             labelSecond={obj.labelSecond}
+            num={obj.num}
 
           // errorOn={errorOn}
           />
@@ -86,6 +125,7 @@ const RenderFields = ({ orderFields, objFields, checkErrorSubmit, setErrCheck })
             label={obj.label}
             labelSecond={obj.labelSecond}
             disabled={obj.disabled}
+            num={obj.num}
           />
         );
       case 'phone':
@@ -96,6 +136,7 @@ const RenderFields = ({ orderFields, objFields, checkErrorSubmit, setErrCheck })
             label={obj.label}
             labelSecond={obj.labelSecond}
             disabled={obj.disabled}
+            num={obj.num}
           />
         );
       case 'textarea':
@@ -107,6 +148,11 @@ const RenderFields = ({ orderFields, objFields, checkErrorSubmit, setErrCheck })
             labelSecond={obj.labelSecond}
             disabled={obj.disabled}
             maxLength={obj.maxLength}
+            num={obj.num}
+
+            validate={obj.validate}
+            checkErrorSubmit={checkErrorSubmit}
+            setErrCheck={setErrCheck}
 
           />
         )
@@ -116,6 +162,7 @@ const RenderFields = ({ orderFields, objFields, checkErrorSubmit, setErrCheck })
           label={obj.label}
           labelSecond={obj.labelSecond}
           options={obj.options}
+          num={obj.num}
         />)
       case 'radio':
         return (
@@ -124,16 +171,27 @@ const RenderFields = ({ orderFields, objFields, checkErrorSubmit, setErrCheck })
             label={obj.label}
             labelSecond={obj.labelSecond}
             options={obj.options}
+            num={obj.num}
           />
         );
       case 'list':
-        return RenderInputList(obj.name, obj.label, obj.labelSecond, obj.options,);
+        return (
+          <RenderInputList
+            name={obj.name}
+            label={obj.label}
+            labelSecond={obj.labelSecond}
+            options={obj.options}
+            num={obj.num}
+
+          />
+        );
       case 'password':
         return (
           <RenderInputPassword
             name={obj.name}
             placeholder={obj.placeholder}
             label={obj.label}
+            num={obj.num}
           />
         );
 
@@ -143,7 +201,7 @@ const RenderFields = ({ orderFields, objFields, checkErrorSubmit, setErrCheck })
             name={obj.name}
             label={obj.label}
             options={obj.options}
-
+            num={obj.num}
           />
         );
       case 'multy':
@@ -155,6 +213,7 @@ const RenderFields = ({ orderFields, objFields, checkErrorSubmit, setErrCheck })
             allFields={obj.allFields}
             checkErrorSubmit={checkErrorSubmit}
             setErrCheck={setErrCheck}
+            num={obj.num}
           />
         );
       case 'select':
@@ -165,6 +224,7 @@ const RenderFields = ({ orderFields, objFields, checkErrorSubmit, setErrCheck })
             labelSecond={obj.labelSecond}
             placeholder={obj.placeholder}
             options={obj.options}
+            num={obj.num}
           />
         );
       case 'file':
@@ -177,6 +237,24 @@ const RenderFields = ({ orderFields, objFields, checkErrorSubmit, setErrCheck })
             maxSize={obj.maxSize}
             textEmpty={obj.textEmpty}
             nameFolder={obj.nameFolder}
+            num={obj.num}
+          />
+        );
+      case 'dropzone':
+        return (
+          <RenderInputFileDropZone
+            name={obj.name}
+            label={obj.label}
+            labelSecond={obj.labelSecond}
+            typeAccept={obj.typeAccept}
+            maxSize={obj.maxSize}
+            textEmpty={obj.textEmpty}
+            nameFolder={obj.nameFolder}
+            num={obj.num}
+
+
+
+
           />
         );
       case 'fileVideo':
@@ -189,6 +267,7 @@ const RenderFields = ({ orderFields, objFields, checkErrorSubmit, setErrCheck })
             typeUpload={obj.typeUpload}
             maxSize={obj.maxSize}
             textEmpty={obj.textEmpty}
+            num={obj.num}
           />
         );
       case 'photo':
@@ -202,6 +281,7 @@ const RenderFields = ({ orderFields, objFields, checkErrorSubmit, setErrCheck })
             maxSize={obj.maxSize}
             typeFile={obj.typeFile}
             textEmpty={obj.textEmpty}
+            num={obj.num}
           />
         );
       case 'complex':
@@ -211,6 +291,7 @@ const RenderFields = ({ orderFields, objFields, checkErrorSubmit, setErrCheck })
             label={obj.label}
             allFields={obj.allFields}
             btnAddText={obj.btnAddText}
+            num={obj.num}
           />
         );
       default:

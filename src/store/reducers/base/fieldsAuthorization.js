@@ -8,7 +8,8 @@ export default function(){
       placeholder: "Почта пользователя", 
       type:"text",
       validate: ['required','minLength','mailCheck'],
-      wrapClass: "form-line"
+      wrapClass: "col-12 account-item",
+      num: "01"
 
     },
     password: { 
@@ -17,7 +18,8 @@ export default function(){
       placeholder: "Введите пароль", 
       type:"password",
       validate: ['required','minLength'],
-      wrapClass: "form-line"
+      wrapClass: "col-12 account-item",
+      num: "02"
     },
   }
 }

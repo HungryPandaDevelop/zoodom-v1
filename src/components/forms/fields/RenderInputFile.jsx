@@ -7,8 +7,7 @@ import { Field } from 'redux-form';
 
 import storeImage from 'hooks/storeImage';
 
-import { getAuth } from 'firebase/auth';
-const auth = getAuth();
+
 const TemplateFile = (props) => {
 
   const storage = getStorage();
@@ -19,9 +18,9 @@ const TemplateFile = (props) => {
     label,
     labelSecond,
     maxSize,
-    typeAccept,
     textEmpty,
-    nameFolder
+    nameFolder,
+    num
   } = props;
 
   const [nameFile, setNameFile] = useState('');
@@ -79,7 +78,9 @@ const TemplateFile = (props) => {
 
   return (
     <>
-      {label && <label><b>{label}</b>{labelSecond && <span>{labelSecond}</span>}</label>}
+      {num && <i className="num-offset">{num}</i>}
+      {label && <label><b>{label}</b></label>}
+      {labelSecond && <div className='hint-input-file'><i><span>{labelSecond}</span></i></div>}
       <div
         className="file-input-container"
       >

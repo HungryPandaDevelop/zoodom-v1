@@ -16,9 +16,9 @@ const TemplateForm = (props) => {
     objFields,
     orderFields,
     btnSaveText,
-    btnClass,
     onSubmitIn,
-    waitAnsw
+    waitAnsw,
+    formClassAdd
   } = props;
 
 
@@ -46,7 +46,7 @@ const TemplateForm = (props) => {
 
   return (
     <form
-      className='form main-grid'
+      className={`form main-grid ${formClassAdd}`}
     >
       <RenderFields
         orderFields={orderFields}

@@ -10,6 +10,7 @@ import fieldsRegistration from 'store/reducers/base/fieldsRegistration';
 import fieldsAccount from 'store/reducers/base/fieldsAccount';
 import fieldsCards from 'store/reducers/base/fieldsCards.js';
 import fieldsNurseries from 'store/reducers/base/fieldsNurseries';
+import fieldsAnnouncement from 'store/reducers/base/fieldsAnnouncement';
 
 
 import fieldsChat from 'store/reducers/base/fieldsChat';
@@ -39,6 +40,7 @@ const rootReducer = combineReducers({
   fieldsAccount: fieldsAccount,
   fieldsCards: fieldsCards,
   fieldsNurseries: fieldsNurseries,
+  fieldsAnnouncement: fieldsAnnouncement,
   fieldsFeedback: fieldsFeedback,
   fieldsChat: fieldsChat,
   fieldsReviews: fieldsReviews,

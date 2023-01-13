@@ -9,7 +9,7 @@ import TemplateAccount from 'pages/cabinet/parts/TemplateAccount';
 import RenderFormAccount from 'components/forms/RenderFormAccount';
 
 
-const VacanciesNew = ({ fields, dataForm, nameList, fieldsDefault }) => {
+const VacanciesNew = ({ fields, dataForm, nameList, fieldsDefault, titleForm }) => {
 
   const navigate = useNavigate();
 
@@ -28,9 +28,9 @@ const VacanciesNew = ({ fields, dataForm, nameList, fieldsDefault }) => {
 
   return (
     <>
-      <TemplateAccount title={`Создание ${nameList}`} >
+      <TemplateAccount title={titleForm} >
         <RenderFormAccount
-          btnSaveText='Добавить'
+          btnSaveText={titleForm}
           objFields={fields[fieldsDefault]}
           orderFields={fields[fieldsDefault].order}
           onSubmitIn={onSubmitIn}

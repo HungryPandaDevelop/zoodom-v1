@@ -30,25 +30,27 @@ const Authorization = ({ uid, formData, fieldsAuthorization }) => {
     <>
       <div className="stub"></div>
       <div className="content">
-        <div className="main-grid">
-          <div className="col-5 col-sm-12 col-xs-12">
-            <h1>Авторизация</h1>
-            <RenderFormAccount
-              btnSaveText="Авторизация"
-              objFields={fieldsAuthorization}
-              orderFields={fieldsAuthorization.order}
-              onSubmitIn={onSubmitIn}
-              formClassAdd='form-default'
-              btnClass='btn--orange'
-              sending={true}
-            />
+        <div className="main-full">
+          <h1>Авторизация</h1>
+        </div>
+        <RenderFormAccount
+          btnSaveText="Авторизация"
+          objFields={fieldsAuthorization}
+          orderFields={fieldsAuthorization.order}
+          onSubmitIn={onSubmitIn}
+          formClassAdd='cabinet-account auth-form'
+          btnClass='btn--orange'
+          sending={true}
+        />
+        <div className="main-full">
+          <div className="forgot-password">
             <Link to="/forgot-password">Восстановить пароль</Link>
           </div>
-          <div className="col-1"></div>
-          <div className="col-6">
-            {/* <OAuth /> */}
-          </div>
+
+          {/* <OAuth /> */}
+
         </div>
+
       </div>
     </>
   )

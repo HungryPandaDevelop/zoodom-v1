@@ -12,7 +12,7 @@ import { getSingleListing } from 'store/asyncActions/getSingleListing';
 import { saveInfo } from 'store/asyncActions/saveInfo';
 
 
-const VacanciesEdit = ({ fields, dataForm, nameList, fieldsDefault }) => {
+const VacanciesEdit = ({ fields, dataForm, nameList, fieldsDefault, titleForm }) => {
 
   const [getInfo, setGetInfo] = useState({});
 
@@ -45,8 +45,10 @@ const VacanciesEdit = ({ fields, dataForm, nameList, fieldsDefault }) => {
 
   return (
     <>
+      <TemplateAccount
+        title={titleForm}
 
-      <TemplateAccount title={nameList} >
+      >
         <RenderFormAccount
           btnSaveText="Сохранить изменения"
           objFields={fields[fieldsDefault]}
@@ -70,7 +72,7 @@ const VacanciesEdit = ({ fields, dataForm, nameList, fieldsDefault }) => {
 const mapStateToProps = (state) => {
 
   const formReducer = state.form && state.form.singleInput;
-  const fields = state.fieldsSpecialization
+
   return {
     fields: state, // база полей
     dataForm: formReducer,

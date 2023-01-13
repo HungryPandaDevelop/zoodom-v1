@@ -6,22 +6,30 @@ const MainInfo = ({ userInfo }) => {
     return `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, value.length)}`
   }
 
+
   return (
     <>
-      <div className="col-12">
-        <h3>Основная информация</h3>
-      </div>
+
       <div className="col-2">
         <PhotoProfile userInfo={userInfo} />
       </div>
       <div className="col-10">
-        <div className="account-item col-6"> <b>Название</b>
+        <div className="account-item col-6"> <b>Имя аккаунта</b>
           <div>{userInfo.accountName ? userInfo.accountName : '-/-'}</div>
         </div>
-        <div className="account-item col-6"> <b>Email </b>
-          <div>{userInfo.email ? (<a href={`mailto:${userInfo.email}`}>{userInfo.email}</a>) : '-/-'}</div>
+        <div className="account-item col-6"> <b>Наименование компании</b>
+          <div>{userInfo.accountName ? userInfo.nameCompany : '-/-'}</div>
         </div>
-        <div className="account-item col-6"> <b>Сайт компании </b>
+        <div className="account-item col-6"> <b>Фамилия</b>
+          <div>{userInfo.accountName ? userInfo.family : '-/-'}</div>
+        </div>
+        <div className="account-item col-6"> <b>Имя</b>
+          <div>{userInfo.accountName ? userInfo.name : '-/-'}</div>
+        </div>
+        <div className="account-item col-6"> <b>Отчество</b>
+          <div>{userInfo.accountName ? userInfo.secondName : '-/-'}</div>
+        </div>
+        <div className="account-item col-6"> <b>Email</b>
           <div>{userInfo.email ? (<a href={`mailto:${userInfo.email}`}>{userInfo.email}</a>) : '-/-'}</div>
         </div>
         <div className="account-item col-6"> <b>Телефоны</b>
@@ -29,7 +37,7 @@ const MainInfo = ({ userInfo }) => {
             <>
               {userInfo.phones.map((item, index) => (
                 <div key={index}>
-                  <a href={`mailto:+7${item.phones}`}>+7{formatPhone(item.phones)}</a>
+                  <a href={`tel:+7${item.phones}`}>+7{formatPhone(item.phones)}</a>
                 </div>
               ))}
             </>

@@ -5,15 +5,53 @@ export default function(){
     order: [
       "imgsAccount",
       "accountName",
+      "nameCompany",
+      "family",
+      "name",
+      "secondName",
       "email",
       "phones",
+      "licenses",
     ],
     accountName: { 
       type:"text" ,
       name: "accountName", 
-      label: "Имя пользователя", 
-      wrapClass: "col-10 account-item" ,
+      label: "Имя аккаунта", 
+      wrapClass: "col-12 account-item" ,
       validate: ['required','minLength'],
+      num: "02",
+    },
+    nameCompany: { 
+      type:"text" ,
+      name: "nameCompany", 
+      label: "Наименование компании", 
+      wrapClass: "col-12 account-item" ,
+      validate: ['required','minLength'],
+      num: "03",
+    },
+    family: { 
+      type:"text" ,
+      name: "family", 
+      label: "Фамилия", 
+      wrapClass: "col-12 account-item" ,
+      validate: ['required','minLength'],
+      num: "04",
+    },
+    name: { 
+      type:"text" ,
+      name: "name", 
+      label: "Имя", 
+      wrapClass: "col-12 account-item" ,
+      validate: ['required','minLength'],
+      num: "05",
+    },
+    secondName: { 
+      type:"text" ,
+      name: "secondName", 
+      label: "Отчество", 
+      wrapClass: "col-12 account-item" ,
+      validate: ['required','minLength'],
+      num: "06",
     },
     email: { 
       type:"text" ,
@@ -21,15 +59,17 @@ export default function(){
       label: "Почта", 
       placeholder: "Почта", 
       disabled: 0,
-      wrapClass: "col-10 col-offset-3 account-item",
+      wrapClass: "col-12 account-item",
       validate: ['required','minLength'],
+      num: "07",
     },
     phones: {
       type: "complex", 
       name: "phones", 
       label:"Телефоны компании",  
-      wrapClass: "col-5 col-offset-3 account-item",
+      wrapClass: "col-12 account-item",
       btnAddText: "Добавить телефон",
+      num: "08",
       allFields: [
         { 
           type:"phone", 
@@ -47,7 +87,20 @@ export default function(){
       typeUpload:".png, .jpg, .jpeg", 
       maxSize: 5242880, 
       textEmpty: "На данный момент фоно не выбрано",
-      wrapClass: "col-2 col-lg-3 col-sm-5 input-photo-container"
+      wrapClass: "col-12 input-photo-container account-item",
+      num: "01",
     },
+    licenses: {
+      type: "dropzone", 
+      name: "licenses", 
+      label:"Загрузите фото лицензии/сертификата на ваши услуги/продукцию*", 
+      labelSecond:"Это необходимо для проверки актуальности ваших предложений для потребителя", 
+      typeFile: "img", 
+      typeUpload:".png, .jpg, .jpeg", 
+      maxSize: 5242880, 
+      num: "09",
+      wrapClass: "col-12 col-lg-3 col-sm-5 account-item"
+    },
+
   }
 }

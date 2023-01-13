@@ -5,12 +5,6 @@ import { Field } from 'redux-form';
 
 import storeImage from 'hooks/storeImage';
 
-import avatarBlack from 'front-end/images/icons/avatar-black.svg'
-import photoIco from 'front-end/images/cabinet/photo-add-black.svg'
-
-// import userIco from 'front-end/images/icons/avatar-black.svg';
-// import photoIco from 'front-end/images/icons/photo-add-black.svg';
-
 const TemplateFile = (props) => {
 
   const elRef = useRef();
@@ -18,8 +12,10 @@ const TemplateFile = (props) => {
   const {
     input,
     label,
+    labelSecond,
     maxSize,
-    typeFile,
+    num,
+
   } = props;
 
   const [nameFile, setNameFile] = useState('');
@@ -65,7 +61,10 @@ const TemplateFile = (props) => {
 
   return (
     <>
-      {label && <b>{label}</b>}
+      {num && <i className="num-offset">{num}</i>}
+      {label && <label><b>{label}</b></label>}
+      {labelSecond && <div className='hint-input-file'><i><span>{labelSecond}</span></i></div>}
+
       <div className='input-photo'>
         <div
           className="input-file-container"
@@ -76,8 +75,7 @@ const TemplateFile = (props) => {
         </div>
 
         {!nameFile && <>
-          <img src={avatarBlack} alt="" className="input-user-ico" />
-          <img src={photoIco} alt="" className="input-photo-ico" />
+          <div className="input-user-ico"></div>
         </>}
         {nameFile && (
           <div className='input-photo-uploaded' style={{ backgroundImage: `url(${nameFile})` }}>

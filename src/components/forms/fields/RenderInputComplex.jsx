@@ -93,16 +93,18 @@ const TemplateInputComplex = ({ allFields, fields, btnAddText }) => {
   )
 }
 
-const RenderInputComplex = ({ name, allFields, label, btnAddText }) => {
+const RenderInputComplex = ({ name, allFields, label, btnAddText, num }) => {
 
   return (
     <>
-      {label && (<b>{label}</b>)}
+      {num && <i className="num-offset">{num}</i>}
+      {label && (<label><b>{label}</b></label>)}
       <FieldArray
         allFields={allFields}
         name={name}
         component={TemplateInputComplex}
         btnAddText={btnAddText}
+        num={num}
       />
     </>
   )

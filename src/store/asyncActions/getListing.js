@@ -37,11 +37,11 @@ export const getListing = async (baseName, uid, type, listingId, limitSize) => {
   let q;
 
   if(type==='userRef'){
-
     q = query(
       listingsRef,
       where('userRef', '==', uid),
       orderBy('timestamp', 'desc'),
+      // limitSize && limit(limitSize)
     );
   }
   else if(type==='inviteBtn'){

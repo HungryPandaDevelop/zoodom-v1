@@ -4,6 +4,8 @@ import { Link, useLocation } from 'react-router-dom';
 
 import { getAuth } from 'firebase/auth';
 
+import PhotoProfile from 'pages/cabinet/account/parts/PhotoProfile';
+
 
 const CabinetSidebar = ({ userInfo }) => {
 
@@ -15,14 +17,21 @@ const CabinetSidebar = ({ userInfo }) => {
   const location = useLocation();
 
   const pathMathRoute = (route) => {
-    if (route === location.pathname) {
+
+    // if (route === location.pathname) {
+    if (location.pathname.indexOf(route) >= 0) {
       return true;
     }
+
   }
 
+
+  // console.log('nurseries-new'.indexOf("nurseries"))
+
   const NameMass = [
-    ['Профиль', '', 'profile-nav'],
-    ['Карточки', 'cards', 'cards-nav'],
+    ['Личные данные', 'account', 'profile-nav'],
+    ['Мои питомники', 'nurseries', 'cards-nav'],
+    ['Объявления', 'announcement', 'cards-nav'],
     ['Избранное', 'liked', 'favorites-nav'],
     ['Спрятанное', 'hidden', 'hidden-nav'],
     ['Чат', 'chat', 'chat-nav'],
@@ -35,37 +44,56 @@ const CabinetSidebar = ({ userInfo }) => {
   ]
 
   return (
-    <div className='cabinet-nav'>
-      <ul className="ln ">
-        {
-          NameMass.map((item, index) => (
-            <li key={index} >
-              <Link className={`${item[2]} ${pathMathRoute('/cabinet/' + item[1]) ? 'active' : ''}`} to={`/cabinet/${item[1]}`}>
-                <i></i>
-                <span>{item[0]}</span>
-              </Link>
-            </li>
-          )
-          )}
-        {userInfo.admin === 'true' && adminMass.map((item, index) => (
-          <li key={index} >
-            <Link className={`${item[2]} ${pathMathRoute('/cabinet/' + item[1]) ? 'active' : ''}`} to={`/cabinet/${item[1]}`}>
+    <>
+
+
+      <div className='cabinet-nav'>
+        <div className="cabinet-nav-profile">
+          <PhotoProfile userInfo={userInfo} />
+          <h3>{userInfo.accountName ? userInfo.accountName : '-/-'}</h3>
+          <h4>{userInfo.typeCabinet ? userInfo.typeCabinet : ''}</h4>
+        </div>
+        <div className="middle-nav-cabinet">
+          <div className='cabinet-nav-topic'>Выберите раздел: </div>
+          <ul className="ln ">
+            {
+              NameMass.map((item, index) => (
+                <li key={index} >
+                  <Link className={`${item[2]} ${pathMathRoute('/cabinet/' + item[1]) ? 'active' : ''}`} to={`/cabinet/${item[1]}`}>
+                    <i></i>
+                    <span>{item[0]}</span>
+                  </Link>
+                </li>
+              )
+              )}
+            {userInfo.admin === 'true' && adminMass.map((item, index) => (
+              <li key={index} >
+                <Link className={`${item[2]} ${pathMathRoute('/cabinet/' + item[1]) ? 'active' : ''}`} to={`/cabinet/${item[1]}`}>
+                  <i></i>
+                  <span>{item[0]}</span>
+                </Link>
+              </li>
+            )
+            )}
+
+          </ul>
+        </div>
+
+        <ul className='ln bottom-nav-cabinet'>
+          <li onClick={onLogout}>
+            <em className='cabinet-logout'>
               <i></i>
-              <span>{item[0]}</span>
-            </Link>
+              <span>Выйти из аккаунта</span>
+            </em>
           </li>
-        )
-        )}
-        <li onClick={onLogout}>
-          <em className='cabinet-logout'>
-            <i></i>
-            <span>Выйти</span>
-          </em>
-        </li>
-      </ul>
+          <li>
+            <em>Удалить аккаунт</em>
+          </li>
+        </ul>
 
 
-    </div>
+      </div>
+    </>
   )
 }
 

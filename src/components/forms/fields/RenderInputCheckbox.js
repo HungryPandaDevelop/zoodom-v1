@@ -3,7 +3,7 @@ import { ReduxCheckbox, Checkboxes } from 'react-form-checkbox';
 
 
 
-const TemplateCheckbox = ({ name, input, label }) => (
+const TemplateCheckbox = ({ name, input, label, num }) => (
   <div className="checkbox">
     <label>
       {label}
@@ -13,17 +13,21 @@ const TemplateCheckbox = ({ name, input, label }) => (
   </div>
 );
 
-const RenderInputCheckbox = ({name, label, labelSecond, options}) => {
+const RenderInputCheckbox = ({name, label, labelSecond, options, num}) => {
   return (
     <>
+      {num && <i className="num-offset">{num}</i>}
       <label><b>{label}</b> {labelSecond ? <span>{labelSecond}</span> : ''}</label>
-      <Field
-        name={name}
-        component={ReduxCheckbox(Checkboxes)}
-        data={options}
-        itemComponent={TemplateCheckbox}
-        variants={options}
-      />
+      <div>
+        <Field
+          name={name}
+          component={ReduxCheckbox(Checkboxes)}
+          data={options}
+          itemComponent={TemplateCheckbox}
+          variants={options}
+          num={num}
+        />
+      </div>
     </>
   );
 }

@@ -1,9 +1,25 @@
-import CardsEdit from 'pages/cabinet/parts/CardsEdit';
+import CardsEditDefault from 'pages/cabinet/parts/cardsDefault/CardsEditDefault';
+import generateTitle from 'pages/cabinet/cards/js/generateTitle';
+import { useParams } from 'react-router-dom';
+
+const PagesEdit = () => {
+  const params = useParams();
 
 
-const ResumeEdit = () => {
-  return <CardsEdit />
+  const word = params.rubricId;
+  const capitalized = word.charAt(0).toUpperCase() + word.slice(1);
+  const fieldsName = 'fields' + capitalized;
+
+
+  let titleForm = generateTitle(params.rubricId, ['Редактировать информацию о питомнике', 'Редактировать информацию о объявлении']);
+
+
+  return <CardsEditDefault
+    nameList={params.rubricId}
+    fieldsDefault={fieldsName}
+    titleForm={titleForm}
+  />
 }
 
 
-export default ResumeEdit;
+export default PagesEdit;
