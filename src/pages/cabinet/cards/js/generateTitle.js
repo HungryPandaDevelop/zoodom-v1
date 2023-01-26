@@ -3,10 +3,10 @@ const generateTitle = (rubricId, arrName)=>{
   let titleForm = '';
 
   switch (rubricId) {
-    case 'nurseries':
-      titleForm = arrName[0]; // 'Мои питомники'
+    case 'services':
+      titleForm = arrName[0]; // 'Мои объявления';
       break;
-    case 'announcement':
+    case 'company':
       titleForm = arrName[1]; // 'Мои объявления';
       break;
     default:

@@ -27,7 +27,7 @@ const AccountEdit = ({
     saveInfo(dataForm.values, uid, 'users').then(() => {
       ActionFn('SET_INFO_ACCOUNT', dataForm.values);
       setWaitAnsw(false);
-      navigate('/cabinet/', { replace: true });
+      // navigate('/cabinet/', { replace: true });
     });
 
 

@@ -28,15 +28,24 @@ const CabinetSidebar = ({ userInfo }) => {
 
   // console.log('nurseries-new'.indexOf("nurseries"))
 
-  const NameMass = [
-    ['Личные данные', 'account', 'profile-nav'],
-    ['Мои питомники', 'nurseries', 'cards-nav'],
-    ['Объявления', 'announcement', 'cards-nav'],
-    ['Избранное', 'liked', 'favorites-nav'],
-    ['Спрятанное', 'hidden', 'hidden-nav'],
-    ['Чат', 'chat', 'chat-nav'],
-    ['Видеочат', 'videochat', 'videochat-nav'],
-  ]
+  let NameMass;
+
+  if (!userInfo.accountName || userInfo.accountName.length === 0) {
+    NameMass = [
+      ['Изменить профиль', 'account', 'profile-nav'],
+    ];
+  } else {
+    NameMass = [
+      ['Частные услуги', 'services', 'cards-nav'],
+      ['Мои компании', 'company', 'cards-nav'],
+      ['Мои объявления', 'announcement', 'cards-nav'],
+      ['Мои отзывы', 'reviews', 'cards-nav'],
+      ['Избранное', 'liked', 'favorites-nav'],
+      ['Спрятанное', 'hidden', 'hidden-nav'],
+      ['Чат', 'chat', 'chat-nav'],
+      ['Видеочат', 'videochat', 'videochat-nav'],
+    ];
+  }
 
 
   const adminMass = [
@@ -50,11 +59,18 @@ const CabinetSidebar = ({ userInfo }) => {
       <div className='cabinet-nav'>
         <div className="cabinet-nav-profile">
           <PhotoProfile userInfo={userInfo} />
-          <h3>{userInfo.accountName ? userInfo.accountName : '-/-'}</h3>
-          <h4>{userInfo.typeCabinet ? userInfo.typeCabinet : ''}</h4>
+          {(!userInfo.accountName || userInfo.accountName.length === 0) ? ('-/-') : (<>
+            <h3>
+              {userInfo.family}
+              {userInfo.name && (<><br />{userInfo.name}</>)}
+              {userInfo.secondName && (<><br />{userInfo.secondName}</>)}
+            </h3>
+          </>)}
+          <div className='cabinet-nav-topic'>
+            <Link to="/cabinet/account-edit">Изменить профиль</Link>
+          </div>
         </div>
         <div className="middle-nav-cabinet">
-          <div className='cabinet-nav-topic'>Выберите раздел: </div>
           <ul className="ln ">
             {
               NameMass.map((item, index) => (

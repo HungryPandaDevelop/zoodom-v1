@@ -18,7 +18,7 @@ const RenderInputCheckbox = ({name, label, labelSecond, options, num}) => {
     <>
       {num && <i className="num-offset">{num}</i>}
       <label><b>{label}</b> {labelSecond ? <span>{labelSecond}</span> : ''}</label>
-      <div>
+      <div className='checkbox-container'>
         <Field
           name={name}
           component={ReduxCheckbox(Checkboxes)}

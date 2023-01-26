@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 import PreloaderList from 'pages/cabinet/parts/PreloaderList';
 import EmptyList from 'pages/cabinet/parts/EmptyList';
 
-const CardsListDefault = ({ uid, cabinetType, nameList, whatshow, whatshowName, titleForm }) => {
+const CardsListDefault = ({ uid, cabinetType, nameList, whatshow, whatshowName, titleForm, addBtnText }) => {
 
   const [loading, setLoading] = useState(true);
 
@@ -69,10 +69,10 @@ const CardsListDefault = ({ uid, cabinetType, nameList, whatshow, whatshowName, 
 
       >
         <div className="add-cards-container">
-          <Link className="btn btn--orange-border cabinet-add-cards ico-in ico-in--left" to={`/cabinet/${nameList}-new`}>
+          <Link className="btn btn--blue cabinet-add-cards ico-in ico-in--left" to={`/cabinet/${nameList}-new`}>
             <i></i>
             <span>
-              Создать
+              {addBtnText}
             </span>
           </Link>
         </div>

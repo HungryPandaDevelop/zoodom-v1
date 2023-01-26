@@ -6,7 +6,8 @@ const Pages = () => {
 
   const params = useParams();
 
-  let titleForm = generateTitle(params.rubricId, ['Мои питомники', 'Мои объявления']);
+  let titleForm = generateTitle(params.rubricId, ['Частные услуги', 'Мои компании', 'Мои питомники', 'Мои объявления']);
+  let addBtnText = generateTitle(params.rubricId, ['Создать услугу', 'Добавить компанию', 'Мои питомники', 'Мои объявления']);
 
   return (
     <>
@@ -15,6 +16,7 @@ const Pages = () => {
         whatshow={['card_name']}
         whatshowName={['Название']}
         titleForm={titleForm}
+        addBtnText={addBtnText}
       />
     </>
   )

@@ -2,15 +2,19 @@
 export default function(){
   return {
     order: [
-      "accountName",
+      // "typeCabinet",
+      // "titleOne",
+      // "accountName",
+      // "innCompany",
+      // "nameCompany",
+      // "family",
+      // "name",
+      // "secondName",
+      // "phones",
       "email",
-      "nameCompany",
+      // "invitation",
       "password",
-      "typeCabinet",
-      "family",
-      "name",
-      "secondName",
-      "phones",
+
     ],
     accountName: { 
       type:"text" ,
@@ -18,7 +22,7 @@ export default function(){
       label: "Имя аккаунта", 
       wrapClass: "col-12 account-item" ,
       validate: ['required','minLength'],
-      num: "01",
+      placeholder: "Введите Имя аккаунта", 
     },
     email: { 
       name: "email", 
@@ -27,7 +31,8 @@ export default function(){
       type:"text" , 
       validate: ['required','minLength','mailCheck'],
       wrapClass: "account-item  col-12",
-      num: "02"
+      placeholder: "Введите Почту", 
+      num: "01"
     },
     password: { 
       name: "password", 
@@ -36,7 +41,7 @@ export default function(){
       type:"password", 
       validate: ['required','minLength'],
       wrapClass: "account-item  col-12",
-      num: "04"
+      num: "02"
     },
     nameCompany: { 
       type:"text" ,
@@ -44,7 +49,7 @@ export default function(){
       label: "Наименование компании", 
       wrapClass: "col-12 account-item" ,
       validate: ['required','minLength'],
-      num: "05",
+      placeholder: "Введите Наименование компании", 
     },
     family: { 
       type:"text" ,
@@ -52,7 +57,7 @@ export default function(){
       label: "Фамилия", 
       wrapClass: "col-12 account-item" ,
       validate: ['required','minLength'],
-      num: "06",
+      placeholder: "Введите Фамилию", 
     },
     name: { 
       type:"text" ,
@@ -60,7 +65,15 @@ export default function(){
       label: "Имя", 
       wrapClass: "col-12 account-item" ,
       validate: ['required','minLength'],
-      num: "07",
+      placeholder: "Введите Имя", 
+    },
+    innCompany: { 
+      type:"inn" ,
+      name: "innCompany", 
+      label: "Инн", 
+      wrapClass: "col-12 account-item" ,
+      validate: ['required','minLength'],
+      placeholder: "Введите инн", 
     },
     secondName: { 
       type:"text" ,
@@ -68,19 +81,32 @@ export default function(){
       label: "Отчество", 
       wrapClass: "col-12 account-item" ,
       validate: ['required','minLength'],
-      num: "06",
+      placeholder: "Введите Отчество",
+    },
+    invitation: { 
+      type:"text" ,
+      name: "invitation", 
+      label: "Введите ваш пригласительный код", 
+      placeholder: "Введите ваш пригласительный код", 
+      wrapClass: "col-12 account-item" ,
+      validate: ['required','minLength'],
+     
     },
     typeCabinet: { 
       type:"radio", 
       name: "typeCabinet", 
       label: "Выберите основной вид вашей деятельности", 
       options: [
-        { label: 'Питомники', value: 'nurseries' },
-        { label: 'Клиники', value: 'clinics' },
-        { label: 'Салон', value: 'salon' }
+        { label: 'Питомник', value: 'nurseries' },
+        { label: 'Вет клиника', value: 'clinics' },
+        { label: 'Салон красоты', value: 'salon' },
+        { label: 'Приют', value: 'shelter' },
+        { label: 'Магазин', value: 'market' },
+        { label: 'Дистрибьютор', value: 'distributor' },
+        { label: 'Обычный Пользователь', value: 'user' }
       ],
-      wrapClass: "col-12 account-item",
-      num: "07"
+      wrapClass: "col-12 account-item type-cabinet-item",
+      num: "01"
     },
     phones: {
       type: "complex", 
@@ -88,7 +114,7 @@ export default function(){
       label:"Телефоны компании",  
       wrapClass: "col-12 account-item",
       btnAddText: "Добавить телефон",
-      num: "08",
+      
       allFields: [
         { 
           type:"phone", 
@@ -96,6 +122,12 @@ export default function(){
           wrapClass: "col-12" 
         },
       ],
+    },
+    titleOne: {
+      type:"title",
+      label:"Основная информация",
+      wrapClass: "col-12 account-item", 
+      num: "02",
     },
   }
 }

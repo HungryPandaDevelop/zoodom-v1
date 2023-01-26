@@ -6,11 +6,11 @@ const BtnContainer = () => {
     <>
       <div className="col-2"></div>
       <div className="col-10 btn-container">
-        <Link to='/cabinet/account-edit/' className="btn btn-edit btn--orange ico-in ico-in--left">
+        <Link to='/cabinet/account-edit/' className="btn btn-edit btn--blue ico-in ico-in--left">
           <i></i>
           <span>Редактировать профиль</span>
         </Link>
-        <div className="btn btn-delete-profiled btn--red ico-in ico-in--left">
+        <div className="btn btn-delete-profiled btn--blue-border ico-in ico-in--left">
           <i></i><span>Удалить профиль</span>
         </div>
       </div></>

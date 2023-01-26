@@ -11,7 +11,7 @@ const PagesEdit = () => {
   const fieldsName = 'fields' + capitalized;
 
 
-  let titleForm = generateTitle(params.rubricId, ['Редактировать информацию о питомнике', 'Редактировать информацию о объявлении']);
+  let titleForm = generateTitle(params.rubricId, ['Редактировать информацию о питомнике', 'Редактировать компанию']);
 
 
   return <CardsEditDefault

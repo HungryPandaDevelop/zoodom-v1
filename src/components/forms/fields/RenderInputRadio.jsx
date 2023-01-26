@@ -7,10 +7,11 @@ const TemplateInputRadio = ({ name, label, labelSecond, options, input, num }) =
     <>
       {num && <i className="num-offset">{num}</i>}
       {label && <label><b>{label}</b> {labelSecond ? <span>{labelSecond}</span> : ''}</label>}
-      <div>
+      <div className="checkbox-container">
         {options.map(item => (
           <div className='checkbox' key={item.value}>
-            <label>{item.label}
+            <label>
+
               <input
                 {...input}
                 name={name}
@@ -19,6 +20,7 @@ const TemplateInputRadio = ({ name, label, labelSecond, options, input, num }) =
                 checked={input.value === item.value ? 'checked' : ''}
               />
               <span></span>
+              <em>{item.label}</em>
             </label>
           </div>
         ))}

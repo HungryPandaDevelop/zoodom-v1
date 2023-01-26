@@ -1,6 +1,9 @@
+import { useState } from 'react';
+
 import RenderTitle from './fields/RenderTitle';
 
 import RenderInputText from './fields/RenderInputText'; // поле стандартное
+import RenderInputInn from './fields/RenderInputInn'; // поле стандартное
 import RenderInputCity from './fields/RenderInputCity'; // поле стандартное
 
 import RenderInputUserRef from './fields/RenderInputUserRef'; // поле стандартное userref
@@ -40,8 +43,12 @@ import RenderInputCoords from './fields/RenderInputCoords'; // поле с се�
 
 
 
+
+
 const RenderFields = ({ orderFields, objFields, checkErrorSubmit, setErrCheck }) => {
 
+
+  const [tempCompany, setTempCompany] = useState('');
 
 
   const choiseFieldType = (type, obj) => {
@@ -68,6 +75,24 @@ const RenderFields = ({ orderFields, objFields, checkErrorSubmit, setErrCheck })
               validate={obj.validate}
               checkErrorSubmit={checkErrorSubmit}
               setErrCheck={setErrCheck}
+              tempCompany={tempCompany}
+            />
+          </>
+        );
+      case 'inn':
+        return (
+          <>
+            <RenderInputInn
+              name={obj.name}
+              num={obj.num}
+              placeholder={obj.placeholder}
+              label={obj.label}
+              labelSecond={obj.labelSecond}
+              disabled={obj.disabled}
+              validate={obj.validate}
+              checkErrorSubmit={checkErrorSubmit}
+              setErrCheck={setErrCheck}
+              setTempCompany={setTempCompany}
             />
           </>
         );

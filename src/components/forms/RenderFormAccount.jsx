@@ -33,7 +33,7 @@ const TemplateForm = (props) => {
 
     setTimeout(() => {
       setCheckErrorSubmit(false);
-    }, 1000);
+    }, 10000);
 
     errCheck && !waitAnsw && onSubmitIn();
 
@@ -61,7 +61,7 @@ const TemplateForm = (props) => {
             <><i></i><span>{btnSaveText}</span></>
           )}
         </button>
-        <Link to="/cabinet/" className="btn btn--red-border ico-in ico-in--left btn-cancel "><i></i><span>Отменить</span></Link>
+        {/* <Link to="/cabinet/" className="btn btn--red-border ico-in ico-in--left btn-cancel "><i></i><span>Отменить</span></Link> */}
       </div>
     </form >
   )

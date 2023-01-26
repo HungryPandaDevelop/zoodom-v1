@@ -7,7 +7,7 @@ const RedirectAccount = () => {
 
   useEffect(() => {
     navigate('/cabinet/account', { replace: true });
-  }, [])
+  }, []);
 
 
   return (

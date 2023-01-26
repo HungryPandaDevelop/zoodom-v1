@@ -17,9 +17,6 @@ const MainInfo = ({ userInfo }) => {
         <div className="account-item col-6"> <b>Имя аккаунта</b>
           <div>{userInfo.accountName ? userInfo.accountName : '-/-'}</div>
         </div>
-        <div className="account-item col-6"> <b>Наименование компании</b>
-          <div>{userInfo.accountName ? userInfo.nameCompany : '-/-'}</div>
-        </div>
         <div className="account-item col-6"> <b>Фамилия</b>
           <div>{userInfo.accountName ? userInfo.family : '-/-'}</div>
         </div>
@@ -33,14 +30,10 @@ const MainInfo = ({ userInfo }) => {
           <div>{userInfo.email ? (<a href={`mailto:${userInfo.email}`}>{userInfo.email}</a>) : '-/-'}</div>
         </div>
         <div className="account-item col-6"> <b>Телефоны</b>
-          <div>{userInfo.phones ? (
-            <>
-              {userInfo.phones.map((item, index) => (
-                <div key={index}>
-                  <a href={`tel:+7${item.phones}`}>+7{formatPhone(item.phones)}</a>
-                </div>
-              ))}
-            </>
+          <div>{userInfo.phoneCompany ? (
+            <div key={userInfo.phoneCompany}>
+              <a href={`tel:+7${userInfo.phoneCompany}`}>+7{formatPhone(userInfo.phoneCompany)}</a>
+            </div>
           ) : '-/-'}
           </div>
         </div>

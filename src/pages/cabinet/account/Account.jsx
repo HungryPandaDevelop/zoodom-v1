@@ -1,13 +1,15 @@
 
 import { connect } from 'react-redux';
 
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 
 import TemplateAccount from 'pages/cabinet/parts/TemplateAccount';
 
 
 import MainInfo from 'pages/cabinet/account/parts/MainInfo';
-import LegalInfo from 'pages/cabinet/account/parts/LegalInfo';
+
 import BtnContainer from 'pages/cabinet/account/parts/BtnContainer';
 
 
@@ -15,6 +17,16 @@ import BtnContainer from 'pages/cabinet/account/parts/BtnContainer';
 const Account = ({ userInfo }) => {
 
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+
+    if (!userInfo.accountName || userInfo.accountName.length === 0) {
+      navigate('/cabinet/account-edit', { replace: true });
+    }
+
+
+  }, []);
 
 
   return (
@@ -39,6 +51,7 @@ const Account = ({ userInfo }) => {
 
 
 const mapStateToProps = (state) => {
+
   return {
     userInfo: state.accountInfo,
   }

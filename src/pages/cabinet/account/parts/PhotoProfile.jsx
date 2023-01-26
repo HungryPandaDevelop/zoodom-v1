@@ -10,7 +10,7 @@ const PhotoProfile = ({ userInfo }) => {
       <div className="cards-face-container">
         {/* <b>Фото профиля</b> */}
         <div
-          className={`img-cover ${userInfo.imgsAccount ? 'cards-face' : 'empty-face'} `}
+          className={`img-cover  cards-face`}
           style={{ backgroundImage: `url(${imgCards})` }}
         >
         </div>

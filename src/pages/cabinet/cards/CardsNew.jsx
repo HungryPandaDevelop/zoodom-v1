@@ -10,7 +10,7 @@ const PagesNew = () => {
   const capitalized = word.charAt(0).toUpperCase() + word.slice(1);
   const fieldsName = 'fields' + capitalized;
 
-  let titleForm = generateTitle(params.rubricId, ['Добавить питомник', 'Добавить объявлениe']);
+  let titleForm = generateTitle(params.rubricId, ['Добавить услугу', 'Добавить компанию']);
 
   return <CardsNewDefault
     nameList={params.rubricId}

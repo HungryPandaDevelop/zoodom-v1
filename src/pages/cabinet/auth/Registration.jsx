@@ -39,7 +39,7 @@ const Registration = (props) => {
       <div className="content">
 
         <div className="main-full">
-          <h1>Регистрация</h1>
+          <h1>Регистрация нового пользователя</h1>
         </div>
         <RenderFormAccount
           btnSaveText="Регистрация"

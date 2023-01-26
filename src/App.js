@@ -12,6 +12,8 @@ import Footer from 'blocks/Footer';
 import MainPage from 'pages/MainPage';
 import Demo from 'pages/Demo';
 import Search from 'pages/Search';
+import Breeds from 'pages/breeds/Breeds';
+import BreedsDetail from 'pages/breeds/BreedsDetail';
 
 
 import NotFound from 'pages/NotFound';
@@ -66,6 +68,8 @@ const App = () => {
         <Routes> 
           <Route path='/' exept element={<MainPage/>} ></Route>
           <Route path='/demo' element={<Demo/>} ></Route>
+          <Route path='/porodi' element={<Breeds/>} ></Route>
+          <Route path='/porodi-:breedsCategory/:breedsID.html' element={<BreedsDetail/>} ></Route>
           <Route path='/search' element={<Search/>} ></Route>
 
 

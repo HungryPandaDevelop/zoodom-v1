@@ -14,6 +14,7 @@ const TempateInputText = (props) => {
     checkErrorSubmit,
     setErrCheck,
     num,
+    tempCompany,
     meta: {
       error,
     }
@@ -28,8 +29,18 @@ const TempateInputText = (props) => {
     }
   }, [error]);
 
+  useEffect(() => {
+    console.log('show tempCompany', tempCompany)
+    if (tempCompany && (input.name === 'nameCompany')) {
+
+      input.onChange(tempCompany)
+    }
+
+  }, [input.value]);
+
   return (
     <>
+      {(tempCompany && input.name === 'nameCompany') && tempCompany}
       {num && <i className="num-offset">{num}</i>}
       {label && <label><b>{label}</b></label>}
       {labelSecond && <div className='hint-input-file'><i><span>{labelSecond}</span></i></div>}
@@ -37,17 +48,17 @@ const TempateInputText = (props) => {
         {...input}
         type="text"
         placeholder={placeholder}
-        className={`input-decorate ${checkErrorSubmit && error && 'error-input'}`}
+        className={`input-decorate ${checkErrorSubmit && error && 'input-error'}`}
 
       />
-      {(checkErrorSubmit && (error && <span>{error}</span>))}
+      {(checkErrorSubmit && (error && <span className='input-error-text'>{error}</span>))}
     </>
   );
 }
 
 
 
-const RenderInputText = ({ name, placeholder, label, checkErrorSubmit, setErrCheck, validate, num }) => {
+const RenderInputText = ({ name, placeholder, label, checkErrorSubmit, setErrCheck, validate, num, tempCompany }) => {
 
   let validateArr = [];
 
@@ -66,6 +77,7 @@ const RenderInputText = ({ name, placeholder, label, checkErrorSubmit, setErrChe
     checkErrorSubmit={checkErrorSubmit}
     setErrCheck={setErrCheck}
     num={num}
+    tempCompany={tempCompany}
   />;
 }
 

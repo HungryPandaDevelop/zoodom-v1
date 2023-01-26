@@ -107,7 +107,7 @@ const Reviews = ({
       <div className="reviews-detail">
         <div className="main-grid cards-second-info">
           <div className="col-6">
-            <h2>Отзывы</h2>
+            <h2>Отзывы о Корги</h2>
             <div className="reviews-list">
               {loading ? 'Загрузка' : !listings ? 'Список пуст' : listings.map((item, index) => (
                 <div key={index} className="reviews-item">
@@ -144,9 +144,12 @@ const Reviews = ({
 
           </div>
           <div className="col-6 rew-default-container">
-            <h2>Оставить отзыв</h2>
+            <h2>Оставить отзыв о Корги</h2>
+            <h3>Оцените породу</h3>
             {listings && showHideForm(listings)}
-
+            <div className="rew-hint-send">
+              Перед отправкой ознакомьтесь с <a href="#">правилами публикации</a>
+            </div>
           </div>
         </div>
 
