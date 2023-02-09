@@ -12,47 +12,15 @@ const Footer = () => {
       {/* <div className="stub-footer"></div> */}
       <footer>
         <div className="main-grid">
-          <div className="footer-info col-3 col-md-12">
-            <div className="logo-container"><a className="logo" href="/">
-              <img src={imgLogo} />
-            </a></div>
-            <div className="copyright">
-              Мы - команда профессиональных рекрутеров, исследующих и развивающих отраслевоай поиск в области подбора работы и персонала. Мы преобразовываем обрасль путем применения инновационных решений.</div>
-          </div>
-          <nav className="nav-1 col-2 col-md-4 col-xs-12">
-            <h3>Услуги</h3>
-            <ul>
-              <li> <a href="/catalog/resume"> Подбор персонала</a></li>
-              <li> <a href="/catalog/vacancies"> Поиск работы</a></li>
-              {/* <li> <a href="#"> Помощь рекрутера</a></li> */}
-            </ul>
-          </nav>
-          <nav className="nav-3 col-2 col-md-4 col-xs-12">
-            <h3>Возможности</h3>
-            <ul>
-              <li> <a href="/employers">Работодателям</a></li>
-              <li> <a href="/applicants">Соискателям</a></li>
-              <li> <a href="/advertisers">Рекламодателям</a></li>
-            </ul>
-          </nav>
-          <nav className="nav-3 col-2 col-md-4 col-xs-12">
-            <h3>Портал</h3>
-            <ul>
-              <li> <a href="/about"> О нас</a></li>
-              <li> <a href="/contacts"> Контакты</a></li>
-            </ul>
-          </nav>
-          <div className="col-3 footer-contacts col-md-6 col-xs-12">
-            <p>Мы будем признательны за вашу помощь по улучшению функционала портала. Ждем ваших предложений: </p>
-            <p> <Link to="/">general@staff2go.com </Link></p>
-          </div>
-          <div className="col-3 col-md-6 col-xs-12">
-            <div className="links">
-              <div><Link to="/">Пользовательское соглашение</Link></div>
-              <div><Link to="/">Политика конфиденциальности</Link></div>
+          <div className="col-3 col-md-12">
+            <div className="logo-container">
+              <Link className="logo" to="/">
+                <img src={imgLogo} alt={imgLogo} />
+              </Link>
             </div>
-          </div>
-          <div className="social-container col-5 col-md-6 col-xs-12">
+            <div className="company">
+              Компания «Zoodom Russia»
+            </div>
             <div className="social">
               <Link className="social-ico--white" to="/">
                 <img src={vkw} alt="" />
@@ -68,12 +36,55 @@ const Footer = () => {
               </Link>
 
             </div>
+
           </div>
-          <div className="col-4 col-md-6 col-xs-12">
-            <div className="create">
-              <Link to="/">
-                Создание сайта Style You</Link>
+          <div className="col-4 col-xs-6 contacts-footer">
+            <div className="phone-footer contacts-footer-item">
+              <i className='phone-ico'></i>
+              <a href="tel:79852826532">+7 985 282 65 32</a>
             </div>
+            <div className="address-footer contacts-footer-item">
+              <i className='marker-ico'></i>
+              <span>
+                Москва, 102250 <br />
+                15-Парковая 29к8, <br />
+                офис 112
+              </span>
+            </div>
+            <div className="mail-footer contacts-footer-item">
+              <a href="mailto:mail@mail.ru">
+                <i className='mail-ico'></i><span>
+                  mail@mail.ru</span></a>
+            </div>
+
+          </div>
+          <nav className="col-2 col-md-4 col-xs-6">
+            <h3>Портал</h3>
+            <ul>
+              <li> <a href="/about"> О нас</a></li>
+              <li> <a href="/contacts">Контакты</a></li>
+              <li> <a href="/breeds">Породы</a></li>
+              <li> <a href="/catalog/nurseries">Питомники</a></li>
+            </ul>
+          </nav>
+          <div className="col-3 col-xs-12  footer-info">
+            <div>Мы будем признательны за вашу помощь по улучшению функционала портала. Ждем ваших предложений: </div>
+            <div className="cooperation">
+              <b>Заявка на сотрудничество:</b>
+              <a href="/">
+                partner@zoodom.ru
+              </a>
+            </div>
+          </div>
+
+          <div className="col-12 footer-bottom">
+            <div className="copyright">
+              © 2023 Zoodom. Все права защищены.
+            </div>
+            <Link to="/">Пользовательское соглашение</Link>
+            <Link to="/">Политика конфиденциальности</Link>
+            <Link to="/">
+              Создание сайта Style You</Link>
           </div>
         </div>
       </footer>

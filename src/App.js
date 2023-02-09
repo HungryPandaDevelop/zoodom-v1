@@ -1,5 +1,5 @@
-
-import {BrowserRouter, Routes, Route } from 'react-router-dom';
+import {BrowserRouter, Routes, Route, useLocation, Navigate, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,6 +14,7 @@ import Demo from 'pages/Demo';
 import Search from 'pages/Search';
 import Breeds from 'pages/breeds/Breeds';
 import BreedsDetail from 'pages/breeds/BreedsDetail';
+import Contacts from 'pages/Contacts';
 
 
 import NotFound from 'pages/NotFound';
@@ -57,11 +58,20 @@ import GoMap from 'pages/goMap/GoMap';
 
 const App = () => {
 
+  const ScrollToTop =(props) => {
+    const { pathname } = useLocation();
+  
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+  
+    return null;
+  }
 
   return (
     <>
       <BrowserRouter>
-
+      <ScrollToTop />
         <Header  />
                 
         
@@ -71,6 +81,7 @@ const App = () => {
           <Route path='/porodi' element={<Breeds/>} ></Route>
           <Route path='/porodi-:breedsCategory/:breedsID.html' element={<BreedsDetail/>} ></Route>
           <Route path='/search' element={<Search/>} ></Route>
+          <Route path='/contacts' element={<Contacts/>} ></Route>
 
 
           <Route path='/authorization'  element={<Authorization/>} ></Route>

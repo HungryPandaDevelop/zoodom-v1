@@ -70,7 +70,7 @@ const City = ({ russianCities }) => {
 
   return (
     <>
-      <div className="vertical-align col-2 hidden-lg hidden-md hidden-sm hidden-xs">
+      <div className="vertical-align col-2  hidden-sm hidden-xs">
 
         <div className="city-header">
           <em></em>

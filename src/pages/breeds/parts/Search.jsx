@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import PreloaderList from 'pages/cabinet/parts/PreloaderList';
+
 const Search = ({ setGetSearchVal }) => {
 
   const [searchVal, setSearchVal] = useState('');
+
   const [showPreloader, setShowPreloader] = useState(false);
   const onSearch = (e) => {
 
@@ -11,10 +13,11 @@ const Search = ({ setGetSearchVal }) => {
   }
 
   const startSearch = () => {
-    console.log(searchVal)
+
   }
 
   useEffect(() => {
+
     setShowPreloader(true);
     let idStartSearch = setTimeout(() => {
       startSearch();
@@ -29,14 +32,16 @@ const Search = ({ setGetSearchVal }) => {
 
   return (
     <div className="main-full">
-      <div className="search-container">
+      <div className={`search-container input-animate-label`}>
         <input
           type="text"
-          className="input-search input-decorate"
+          id="search"
+          className={`input-search input-decorate ${searchVal.length > 0 ? 'input-empty' : ''}`}
           onChange={(e) => { onSearch(e) }}
           value={searchVal}
-          placeholder="Быстрый поиск породы"
+
         />
+        <label htmlFor="search">Быстрый поиск породы</label>
 
         {showPreloader ? <PreloaderList /> : <i></i>}
 

@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-
-import 'front-end/css/style.css'
 import 'front-end/css/import.css'
+import 'front-end/css/style.css'
+
 
 
 import { createStore , applyMiddleware  } from 'redux';

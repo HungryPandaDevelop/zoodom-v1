@@ -52,13 +52,13 @@ const Header = () => {
       <AuthInfo />
       <header >
         <div className="main-grid">
-          <div className="vertical-align col-5">
+          <div className="vertical-align col-5 col-lg-6 col-md-10 col-sm-10 col-xs-11">
             <Logo />
             <div className="hamburger-btn element-btn" onClick={showPopup}></div>
             <City />
             <CheckLogged showPopup={showPopup} />
           </div>
-          <div className="vertical-align col-6">
+          <div className="vertical-align col-6 col-lg-5 hidden-md hidden-sm hidden-xs">
             <Nav />
           </div>
           <div className="vertical-align col-1">

@@ -9,12 +9,12 @@ const CardsItem = ({ listing }) => {
 
   return (
     <>
-      <div className="nurseries-item">
-        <Link className="nurseries-item-img" to={`/porodi-${listing.category}/${listing.slug}.html`}>
+      <div className="breeds-item">
+        <Link className="breeds-item-img" to={`/porodi-${listing.category}/${listing.slug}.html`}>
           <div className="img-cover" style={{ backgroundImage: `url( ${imgCards} )` }}>
           </div>
         </Link>
-        <div className="nurseries-item-info">
+        <div className="breeds-item-info">
           <h3><Link to={`/porodi-${listing.category}/${listing.slug}.html`}>{listing.title}</Link></h3>
         </div>
       </div>

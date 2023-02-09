@@ -47,7 +47,7 @@ const TemplateSelect = (props) => {
       };
 
     }
-  });
+  }, []);
   // console.log(options, select)
 
   const renderOptions = options.map((li) => {

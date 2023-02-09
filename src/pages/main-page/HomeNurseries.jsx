@@ -22,7 +22,7 @@ const HomeNurseries = () => {
 
 
   return (
-    <>
+    <section>
       <div className="main-full head-section">
         <h2 className="title-section">
           Питомники</h2><a className="back-link" href="/catalog/nurseries">Все Питомники</a>
@@ -30,14 +30,14 @@ const HomeNurseries = () => {
       <div className='main-grid'>
         {loading ? 'Loading' : listings &&
           listings.map((item) => (
-            <div key={item.id} className="col-3">
+            <div key={item.id} className="nurse-wrap-item col-3 col-lg-4 col-md-6 col-xs-12">
               <CardsItem
                 listing={item}
                 key={item.id}
               />
             </div>
           ))}
-      </div></>
+      </div></section>
   )
 }
 

@@ -1,39 +1,84 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Field } from 'redux-form';
 
-const TemplateFieldPassword = ({ input, label, placeholder, labelSecond, num, errorOn, meta: { touched, error } }) => {
+import { required, minLength, mailCheck, checkRus } from 'components/forms/validator';
+
+
+const TemplateFieldPassword = ({
+  input,
+  label,
+  placeholder,
+  labelSecond,
+  num,
+  checkErrorSubmit,
+  setErrCheck,
+  meta: {
+    error,
+  }
+}) => {
 
   const [showPass, setShowPass] = useState(false);
+
+
+  useEffect(() => {
+    if (error) {
+      setErrCheck(false);
+    }
+    else {
+      setErrCheck(true);
+    }
+  }, [error]);
 
 
   return (
     <>
       {num && <i className="num-offset">{num}</i>}
-      {label && <label><b>{label}</b> {labelSecond ? <span>{labelSecond}</span> : ''}</label>}
-      <div className="password-field" >
-        <input
-          type={showPass ? ("text") : ("password")}
-          {...input}
-          placeholder={placeholder}
-          className={`input-decorate ${errorOn && touched && error && 'error-input'}`}
-        />
-        <i className="view-ico" data-visibility={showPass} onClick={() => { setShowPass((prevState) => !prevState) }}></i>
-      </div>
-      {errorOn && touched && error && <span className='error-hint'>{error}</span>}
+
+
+      <input
+        type={showPass ? ("text") : ("password")}
+        {...input}
+        id={input.name}
+        placeholder={placeholder}
+        className={`input-decorate ${checkErrorSubmit && error && 'input-error'} ${input.value.length > 0 ? 'input-empty' : ''}`}
+      />
+      {label && <label htmlFor={input.name}><b>{label}</b> {labelSecond ? <span>{labelSecond}</span> : ''}</label>}
+      <i className="pass-ico" data-visibility={showPass} onClick={() => { setShowPass((prevState) => !prevState) }}></i>
+
+      {(checkErrorSubmit && (error && <span className='input-error-text'>{error}</span>))}
     </>
   )
 }
 
-const RenderInputPassword = ({ name, placeholder, label, labelSecond, errors, errorOn, num }) => {
+const RenderInputPassword = ({
+  name,
+  label,
+  labelSecond,
+  num,
+  checkErrorSubmit,
+  setErrCheck,
+  validate,
+}) => {
+
+  let validateArr = [];
+
+  validate && validate.map((item) => {
+    if (item === 'required') { validateArr.push(required); }
+    else if (item === 'minLength') { validateArr.push(minLength); }
+    // else if (item === 'checkRus') { validateArr.push(checkRus); }
+    else if (item === 'mailCheck') { validateArr.push(mailCheck); }
+
+  })
+
   return <Field
     name={name}
     label={label}
     labelSecond={labelSecond}
-    placeholder={placeholder}
-    component={TemplateFieldPassword}
-    errors={errors}
-    errorOn={errorOn}
     num={num}
+    component={TemplateFieldPassword}
+    validate={validateArr}
+    checkErrorSubmit={checkErrorSubmit}
+    setErrCheck={setErrCheck}
   />;
 }
 

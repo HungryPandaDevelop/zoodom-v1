@@ -1,12 +1,14 @@
-import RenderFormAccount from 'components/forms/RenderFormAccount';
+import RenderFormReviews from 'components/forms/RenderFormReviews';
+import ReviewsItem from 'pages/catalog/parts/cardsDetail/ReviewsItem';
+import axios from "axios";
 import { connect } from 'react-redux';
 
 import { useEffect, useState } from 'react';
 
-import SimpleDateTime from 'react-simple-timestamp-to-date';
+import { toast } from 'react-toastify';
 
-import { addRews } from 'store/asyncActions/addCards';
-import { getListing } from 'store/asyncActions/getListing';
+// import { addRews } from 'store/asyncActions/addCards';
+// import { getListing } from 'store/asyncActions/getListing';
 
 
 import defaultCardsImg from 'front-end/images/icons/avatar-black.svg';
@@ -18,21 +20,31 @@ const Reviews = ({
   userInfo,
   fields,
   elementId,
+  title,
+  authwp
 }) => {
 
 
+  const siteWp = 'http://zoo-base.sait.website/';
 
   const [loading, setLoading] = useState(true);
   const [listings, setListings] = useState(null);
   const [refreshDoc, setRefreshDoc] = useState(false);
+  const [tempValue, setTempValue] = useState({});
 
   useEffect(() => {
     let isMounted = true;
 
-    getListing('reviews', elementId, 'reviews').then(res => {
-      if (isMounted) {
-        setListings(res);
+    // getListing('reviews', elementId, 'reviews').then(res => {
+    //   if (isMounted) {
+    //     setListings(res);
+    //     setLoading(false);
+    //   }
+    // });
+    axios.get(`${siteWp}/wp-json/comments/list?listingRef=${elementId}`).then(res => {
 
+      if (isMounted) {
+        setListings(res.data);
         setLoading(false);
       }
     });
@@ -49,11 +61,36 @@ const Reviews = ({
       ...dataForm.values,
       accountName: userInfo.accountName,
       imgsAccount: imgCards,
-      uid: userInfo.uid
+      uid: userInfo.uid,
+      listingRef: elementId
     };
-    addRews(addUserInfo, 'reviews', elementId).then((res) => {
-      setRefreshDoc(!refreshDoc)
-    });
+    if (!dataForm.syncErrors) {
+
+      // addRews(addUserInfo, 'reviews', elementId).then((res) => {
+      //   setRefreshDoc(!refreshDoc)
+      // });
+
+
+      axios.post(`${siteWp}/wp-json/comments/add`, addUserInfo, {
+
+
+      }).then(res => {
+        setRefreshDoc(!refreshDoc);
+        toast.success('Отзыв опубликован');
+
+        setTimeout(() => {
+          setTempValue({
+            dignity: ' ',
+            limitations: ' ',
+            reviews: ' ',
+          });
+        }, 3000);
+
+      }).catch(err => {
+        console.log('err', err);
+      });
+
+    }
 
   }
 
@@ -69,87 +106,62 @@ const Reviews = ({
 
     if (chectUId) {
       return (
-        checkingStatus ? 'Loading account...' : !uid ? 'Что бы оставить отзыв авторизируйтесь' : (
-          <RenderFormAccount
-            btnSaveText="Оставить отзыв"
-            objFields={fields}
-            orderFields={fields.order}
-            onSubmitIn={onSubmitIn}
-            sending={true}
-            btnClass='btn-save btn--orange'
-            formClassAdd="form-default"
-          />
+        checkingStatus ? 'Loading account...' : (
+          <>
+
+            <h2>Оставить отзыв о {title}</h2>
+            <h3>Оцените породу</h3>
+            <RenderFormReviews
+              btnSaveText="Оставить отзыв"
+              objFields={fields}
+              orderFields={fields.order}
+              onSubmitIn={onSubmitIn}
+              sending={true}
+              initialValues={tempValue}
+              btnClass='btn-save btn--orange'
+              formClassAdd="form-default rew-default-container"
+              userInfo={userInfo}
+              uid={uid}
+            />
+            <div className="rew-hint-send">
+              Перед отправкой ознакомьтесь с <a href="#">правилами публикации</a>
+            </div>
+          </>
+
         )
       )
     }
     else {
-      return 'Вы уже оставили отзыв';
+      return (<h2>Вы уже оставили отзыв</h2>);
     }
-
-
 
   }
 
-  const renderStars = (item) => {
-    const stars = [];
-    for (let i = 0; i < 5; i++) {
-      stars.push(<i
-        key={i}
-        className={`star-ico star-ico--green ${Number(item.grade) - 1 >= i && 'active'}`}
-      ></i>)
-    }
 
-    return stars;
-  }
 
   return (
     <>
       <div className="reviews-detail">
-        <div className="main-grid cards-second-info">
-          <div className="col-6">
-            <h2>Отзывы о Корги</h2>
-            <div className="reviews-list">
-              {loading ? 'Загрузка' : !listings ? 'Список пуст' : listings.map((item, index) => (
-                <div key={index} className="reviews-item">
-                  <div className="main-grid">
-                    <div className="reviews-info col-3">
-                      <div
-                        className="reviews-img img-cover"
-                        style={{ backgroundImage: `url(${item.imgsAccount})` }}
-                      >
-
-                      </div>
-                      <h2>{item.accountName}</h2>
-                      <h3>
-                        <SimpleDateTime
-                          format="MYD"
-                          showTime="0"
-                          dateSeparator="."
-                        >{item.timestamp.seconds}</SimpleDateTime>
-
-                      </h3>
-                    </div>
-                    <div className="reviews-body col-9">
-                      <div className="reviews-text">
-                        {item.reviews}
-                      </div>
-                      <div className="reviews-stars-container">
-                        {renderStars(item)}
-                      </div>
-                    </div>
-                  </div>
+        <div className="main-grid ">
+          <div className="col-6 col-sm-12">
+            {loading ? 'Загрузка...' : listings.length === 0 ? (<></>) : (
+              <>
+                <h2>Отзывы о {title}</h2>
+                <div className="reviews-list">
+                  {listings.map((item, index) => (
+                    <ReviewsItem
+                      key={index}
+                      item={item}
+                      defaultCardsImg={defaultCardsImg}
+                    />
+                  ))}
                 </div>
-              ))}
-            </div>
-
+              </>
+            )}
           </div>
-          <div className="col-6 rew-default-container">
-            <h2>Оставить отзыв о Корги</h2>
-            <h3>Оцените породу</h3>
+          <div className="col-6  col-sm-12 rew-default-container">
             {listings && showHideForm(listings)}
-            <div className="rew-hint-send">
-              Перед отправкой ознакомьтесь с <a href="#">правилами публикации</a>
-            </div>
+
           </div>
         </div>
 

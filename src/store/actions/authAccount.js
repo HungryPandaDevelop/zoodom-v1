@@ -22,6 +22,7 @@ export const authAccount =  async (formData) => {
         console.log('user', userCredential)
       }
 
+      return true;
 
     } catch (error) {
     
@@ -34,6 +35,8 @@ export const authAccount =  async (formData) => {
       else{
         toast.error('Ошибка авторизации');
       }
+
+      return false;
       
     }
 

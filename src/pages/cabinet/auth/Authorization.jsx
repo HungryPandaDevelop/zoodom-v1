@@ -23,7 +23,13 @@ const Authorization = ({ uid, formData, fieldsAuthorization }) => {
   }, [uid]);
 
   const onSubmitIn = () => {
-    authAccount(formData)
+    console.log('sub')
+    if (formData) {
+      authAccount(formData);
+
+    } else {
+      console.log('error')
+    }
   }
 
   return (

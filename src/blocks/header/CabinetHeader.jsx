@@ -51,7 +51,7 @@ const CabinetHeader = ({ userInfo, showPopup, uid }) => {
     <>
 
       <div className="sigin-body">
-        <div className="btn-header-container hidden-md hidden-sm hidden-xs">
+        <div className="btn-header-container">
           <Link to={`/cabinet/${userInfo.typeCabinet}-new`} className="btn-header-cards btn-header"></Link>
           <Link to='/cabinet/chat' className="btn-header-chat btn-header">
             {myRoomsMessage.length > 0 && <div className="new-message-warning"></div>}

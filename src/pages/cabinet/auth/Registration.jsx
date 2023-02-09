@@ -21,10 +21,13 @@ const Registration = (props) => {
 
     if (props.formData) {
 
-      if (!props.formData.typeCabinet) { props.formData.typeCabinet = 'resume' };
-      // console.log(props.formData);
-      registrationAccount(props.formData).then(() => {
-        navigate('/cabinet/', { replace: true });
+      registrationAccount(props.formData).then((res) => {
+        if (res) {
+          navigate('/cabinet/', { replace: true });
+        }
+        else {
+          console.log('Ошибка')
+        }
       });
 
     }

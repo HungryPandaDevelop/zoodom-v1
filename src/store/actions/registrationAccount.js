@@ -49,10 +49,16 @@ export const registrationAccount = async (formData) => {
     //
     toast.success('Rегистрация успешна');
   
+    return true;
 
   } catch (error) {
-    console.log(error)
-    toast.error('Ошибка регистрации');
+    console.log(error.code )
+    if( error.code === 'auth/email-already-in-use'){
+      toast.error('Такой Email уже есть');
+
+    }
+
+    return false;
   }
 }
     

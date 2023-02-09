@@ -5,20 +5,18 @@ export default function(){
     email: { 
       name: "email", 
       label: "Почта пользователя", 
-      placeholder: "Почта пользователя", 
       type:"text",
-      validate: ['required','minLength','mailCheck'],
-      wrapClass: "col-12 account-item",
+      validate: ['required','minLength','checkRus','mailCheck'],
+      wrapClass: "col-12 account-item input-animate-label",
       num: "01"
 
     },
     password: { 
       name: "password", 
       label: "Пароль", 
-      placeholder: "Введите пароль", 
       type:"password",
       validate: ['required','minLength'],
-      wrapClass: "col-12 account-item",
+      wrapClass: "col-12 account-item input-animate-label password-field",
       num: "02"
     },
   }

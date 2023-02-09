@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import BreedsItem from 'pages/breeds/parts/BreedsItem';
 import Search from 'pages/breeds/parts/Search';
+import SearchSelects from 'pages/breeds/parts/SearchSelects';
 
 import axios from "axios";
 
@@ -13,16 +14,31 @@ const Breeds = () => {
 
   const [getSerchVal, setGetSearchVal] = useState('');
 
+  const [searchValSelect, setSearchValSelect] = useState({
+    city: '',
+    keep: '',
+    size: '',
+    purpose: '',
+
+  });
+
+  const [loadListFields, setLoadListFields] = useState([])
+  const [loadingLoadListFields, setLoadingLoadListFields] = useState(true)
+
   useEffect(() => {
-
-    axios.get(`${siteWp}/wp-json/breeds/list?search=${getSerchVal}`).then(res => {
-      console.log('list', res.data);
-
+    console.log(searchValSelect);
+    axios.get(`${siteWp}/wp-json/breeds/list?search=${getSerchVal}&city=${searchValSelect?.city}&keep=${searchValSelect?.keep}&purpose=${searchValSelect?.purpose}&size=${searchValSelect?.size}`).then(res => {
+      setLoading(false);
       setListings(res.data);
-      setLoading(false)
+
+
+    });
+    axios.get(`${siteWp}/wp-json/fields/get`).then(res => {
+      setLoadingLoadListFields(false);
+      setLoadListFields(res.data)
     });
 
-  }, [getSerchVal])
+  }, [getSerchVal, searchValSelect])
 
 
 
@@ -35,13 +51,26 @@ const Breeds = () => {
       </div>
       <Search
         setGetSearchVal={setGetSearchVal}
+
       />
-      <div className="main-grid">
+
+      {loadingLoadListFields ? (<div className="main-full">Loading...</div>) : (
+        <SearchSelects
+          fieldCity={loadListFields?.field_city?.choices}
+          fieldKeep={loadListFields?.field_keep?.choices}
+          fieldSize={loadListFields?.field_size?.choices}
+          fieldPurpose={loadListFields?.field_purpose?.choices}
+          searchValSelect={searchValSelect}
+          setSearchValSelect={setSearchValSelect}
+        />
+      )}
+
+      <div className="catalog-grid">
 
         {loading ? 'Loading...' : listings.length > 0 ? (
           <>
             {listings.map((item, index) => (
-              <div className='col-3' key={index}>
+              <div className='col-3 col-lg-4 col-sm-6  col-xs-12' key={index}>
                 <BreedsItem listing={item} />
 
               </div>))}

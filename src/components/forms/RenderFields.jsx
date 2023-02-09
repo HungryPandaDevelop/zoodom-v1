@@ -41,14 +41,15 @@ import RenderInputComplex from './fields/RenderInputComplex'; // поле с с�
 
 import RenderInputCoords from './fields/RenderInputCoords'; // поле с селект
 
+import RenderInputOutValue from './fields/RenderInputOutValue'; // поле с селект
 
 
 
 
-const RenderFields = ({ orderFields, objFields, checkErrorSubmit, setErrCheck }) => {
+
+const RenderFields = ({ orderFields, objFields, checkErrorSubmit, setErrCheck, outerValue }) => {
 
 
-  const [tempCompany, setTempCompany] = useState('');
 
 
   const choiseFieldType = (type, obj) => {
@@ -75,7 +76,15 @@ const RenderFields = ({ orderFields, objFields, checkErrorSubmit, setErrCheck })
               validate={obj.validate}
               checkErrorSubmit={checkErrorSubmit}
               setErrCheck={setErrCheck}
-              tempCompany={tempCompany}
+            />
+          </>
+        );
+      case 'outValue':
+        return (
+          <>
+            <RenderInputOutValue
+              name={obj.name}
+              outerValue={outerValue}
             />
           </>
         );
@@ -92,7 +101,6 @@ const RenderFields = ({ orderFields, objFields, checkErrorSubmit, setErrCheck })
               validate={obj.validate}
               checkErrorSubmit={checkErrorSubmit}
               setErrCheck={setErrCheck}
-              setTempCompany={setTempCompany}
             />
           </>
         );
@@ -125,7 +133,6 @@ const RenderFields = ({ orderFields, objFields, checkErrorSubmit, setErrCheck })
         return (
           <RenderInputStar
             name={obj.name}
-            placeholder={obj.placeholder}
             label={obj.label}
             num={obj.num}
           />
@@ -214,9 +221,11 @@ const RenderFields = ({ orderFields, objFields, checkErrorSubmit, setErrCheck })
         return (
           <RenderInputPassword
             name={obj.name}
-            placeholder={obj.placeholder}
             label={obj.label}
             num={obj.num}
+            validate={obj.validate}
+            checkErrorSubmit={checkErrorSubmit}
+            setErrCheck={setErrCheck}
           />
         );
 

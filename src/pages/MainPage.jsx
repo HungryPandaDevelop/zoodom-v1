@@ -11,7 +11,7 @@ const MainPage = () => {
     <>
       <MainSection />
       <HomeNurseries />
-      <FeedbackHome />
+      <div className="stub-footer"></div>
     </>
   );
 };

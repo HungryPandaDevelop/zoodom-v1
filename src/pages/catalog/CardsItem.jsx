@@ -53,7 +53,8 @@ const CardsItem = ({ listing }) => {
         </Link>
         <div className="nurseries-item-info">
           <h3><Link to={`/catalog/nurseries/${listing.id}`}>{listing.card_name}</Link></h3>
-          <div className="nurseries-item-text">{listing.cards_description_mini}</div>
+          {listing.cards_description_mini && (<div className="nurseries-item-text">{listing.cards_description_mini}</div>)}
+
           {listing.cards_coords && (
             <div className="nurseries-address"> <b>Адрес:</b><span>{coords[0]}</span></div>
           )}
