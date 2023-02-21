@@ -31,17 +31,17 @@ const TempateInputCity = (props) => {
 
       setСhoiseName(input.value);
 
-    }
+    };
 
     const hideByBodyClick = (e) => {
       if (e.target.className !== 'city-input input-decorate' && e.target.className !== 'city-name') {
         setCityPopupState(false)
       }
 
-    }
+    };
     const hideByBodyByKey = (e) => {
       if (e.key === 'Escape') { setCityPopupState(false); }
-    }
+    };
     document.addEventListener('keydown', hideByBodyByKey);
     document.body.addEventListener('click', hideByBodyClick);
     return () => {
@@ -73,7 +73,7 @@ const TempateInputCity = (props) => {
   }
 
   const renderCityList = (russianCitiesListParam) => {
-
+    console.log('city')
     return (russianCitiesListParam.length > 0) ? russianCitiesListParam.map((item, index) => (
       <li
         key={index}
@@ -89,15 +89,16 @@ const TempateInputCity = (props) => {
   return (
     <>
       {num && <i className="num-offset">{num}</i>}
-      {label && <label><b>{label}</b></label>}
-      {labelSecond && <div className='hint-input-file'><i><span>{labelSecond}</span></i></div>}
+
+
       <input
         {...input}
         type="hidden"
         placeholder={placeholder}
-        className={`input-decorate`}
+        className={`input-decorate  ${input.value.length > 0 ? 'input-empty' : ''} `}
 
       />
+      {label && <label><b>{label}</b>{labelSecond && <div className='hint-input-file'><i><span>{labelSecond}</span></i></div>}</label>}
       <div className="city-field">
 
         <div

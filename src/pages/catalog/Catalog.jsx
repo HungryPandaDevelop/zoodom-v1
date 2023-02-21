@@ -60,6 +60,9 @@ const Catalog = ({
     case "clinics":
       titleCategory = "Клиники"
       break;
+    case "specialists":
+      titleCategory = "Специалисты"
+      break;
 
     default:
       titleCategory = "Категория не выбрана"
@@ -71,9 +74,7 @@ const Catalog = ({
       <div className="stub"></div>
 
       <Breadcrumbs titleCategory={titleCategory} listingType={params.catagoryName} />
-      <div className="btn-container"
-        style={{ height: '150px', background: "#ccc" }}
-      >
+      <div className="btn-container">
         <CatalogChange />
       </div>
       <div className="content">

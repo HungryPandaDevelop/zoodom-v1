@@ -78,7 +78,7 @@ const App = () => {
         <Routes> 
           <Route path='/' exept element={<MainPage/>} ></Route>
           <Route path='/demo' element={<Demo/>} ></Route>
-          <Route path='/porodi' element={<Breeds/>} ></Route>
+          <Route path='/porodi-:breedsCategory/' element={<Breeds/>} ></Route>
           <Route path='/porodi-:breedsCategory/:breedsID.html' element={<BreedsDetail/>} ></Route>
           <Route path='/search' element={<Search/>} ></Route>
           <Route path='/contacts' element={<Contacts/>} ></Route>

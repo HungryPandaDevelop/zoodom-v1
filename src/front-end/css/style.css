@@ -1118,6 +1118,11 @@ section {
   outline: 0;
 }
 
+.account-item label {
+  font-size: 18px;
+  position: relative;
+}
+
 .input-animate-label {
   position: relative;
   padding-top: 30px;
@@ -1204,7 +1209,7 @@ section {
   width: 30px;
   position: absolute;
   height: 30px;
-  right: 0;
+  left: 0;
   top: 26px;
   margin: 4px;
   background-position: center;
@@ -1213,7 +1218,7 @@ section {
   background-image: url("../images/icons/loop-black.svg");
 }
 .search-container .input-decorate {
-  padding-right: 45px;
+  padding-left: 45px;
 }
 .search-container .preloader-container {
   width: 30px;
@@ -1231,6 +1236,7 @@ section {
 }
 .search-container label {
   color: #000;
+  padding-left: 45px;
 }
 .search-container .input-search-hint {
   margin-top: 5px;
@@ -1261,6 +1267,28 @@ section {
 .search-selects b {
   font-size: 14px;
   font-weight: 700;
+}
+
+.cabinet-account .mail-input-box.account-item input {
+  background-position: 0 6px;
+  background-repeat: no-repeat;
+  background-size: 23px;
+  background-image: url("../images/icons/e-mail-blue.svg");
+  padding-left: 38px;
+}
+.cabinet-account .mail-input-box.account-item label {
+  padding-left: 80px;
+}
+
+.cabinet-account .pass-input-box.account-item input {
+  background-position: 0 6px;
+  background-repeat: no-repeat;
+  background-size: 23px;
+  background-image: url("../images/icons/pass-blue.svg");
+  padding-left: 38px;
+}
+.cabinet-account .pass-input-box.account-item label {
+  padding-left: 80px;
 }
 
 /*-custom-select-*/
@@ -1335,14 +1363,20 @@ section {
 .city-field {
   padding: 9px 12px;
   border: 0;
+  height: 38px;
   position: relative;
   color: #303030;
   border-bottom: 1px solid #777;
   -webkit-transition: ease-out 0.5s;
   transition: ease-out 0.5s;
 }
+.city-field .city-input {
+  padding-left: 10px;
+}
 .city-field .city-name {
   cursor: pointer;
+  height: 100%;
+  padding-left: 30px;
 }
 .city-field .city-name:hover {
   color: #729EFC;
@@ -1390,6 +1424,7 @@ section {
   width: 100%;
   position: absolute;
   height: auto;
+  z-index: 2;
   left: 0;
   top: 100%;
   background-color: #ffffff;
@@ -1413,6 +1448,7 @@ section {
 }
 .city-field-popup li {
   padding: 5px;
+  padding-left: 50px;
   cursor: pointer;
 }
 .city-field-popup li:hover {
@@ -1514,7 +1550,9 @@ section {
 
 .hint-input-file {
   display: inline-block;
-  position: relative;
+  position: absolute;
+  left: 100%;
+  top: 0;
   margin-left: 30px;
 }
 .hint-input-file span {
@@ -1527,7 +1565,7 @@ section {
   position: absolute;
   width: 480px;
   left: 100%;
-  top: 50%;
+  top: 0%;
   -webkit-transform: translateY(-46%);
           transform: translateY(-46%);
 }
@@ -1537,7 +1575,7 @@ section {
   position: absolute;
   height: 10px;
   left: -6px;
-  top: 50%;
+  top: 70%;
   margin-top: -5px;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
@@ -1587,6 +1625,7 @@ section {
   margin-top: 18px;
   width: 120px;
   margin-bottom: 60px;
+  margin-left: 40px;
 }
 .file-input-container:hover .file-decorate {
   background-image: url("../images/icons/file-upload-blue.svg");
@@ -1735,10 +1774,14 @@ section {
 
 /*-photo-upload-*/
 /*-dragdrop-upload-*/
+.file-uploaded-wrapper {
+  padding-left: 40px;
+}
+
 .dragdrop-container {
   position: relative;
-  margin: 15px 0 30px;
-  width: 100%;
+  margin: 15px 0 30px 40px;
+  width: calc(100% - 50px);
   padding: 15px;
   min-height: 90px;
   border: 2px dashed #C4C4C4;
@@ -1782,6 +1825,7 @@ section {
 .checkbox label,
 .radio label {
   cursor: pointer;
+  position: static;
 }
 .checkbox:last-child,
 .radio:last-child {
@@ -2577,6 +2621,40 @@ header.stick .header-bg {
 }
 .nav-header li {
   margin-right: 15px;
+  position: relative;
+}
+.nav-header li i {
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-image: url("../images/arrows/carret-down-white.svg");
+  -webkit-transition: ease-out 0.25s;
+  transition: ease-out 0.25s;
+}
+.nav-header li ul {
+  width: 150px;
+  position: absolute;
+  height: auto;
+  left: 0;
+  top: 100%;
+  margin-left: -8px;
+  background-color: #729EFC;
+  padding-top: 10px;
+  display: none;
+}
+.nav-header li ul li {
+  padding: 4px 8px;
+}
+.nav-header li:hover ul {
+  display: block;
+}
+.nav-header li:hover i {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
 }
 
 .btn-header-container {
@@ -4877,13 +4955,10 @@ footer .cooperation b {
   margin-bottom: 8px;
 }
 
-.account-item label {
-  font-size: 18px;
+.img-item-input .num-offset {
+  top: 0;
 }
 
-.map-input {
-  position: relative;
-}
 .map-input .hidden-field {
   width: 0;
   position: absolute;
@@ -5646,6 +5721,10 @@ footer .cooperation b {
   width: 100%;
 }
 
+.breed-slider-wrapper {
+  margin-bottom: 45px;
+}
+
 .breed-slider-add {
   width: 180px;
 }
@@ -5683,7 +5762,7 @@ footer .cooperation b {
   -ms-grid-columns: 1fr 15px 1fr;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px 15px;
-  position: sticky;
+  margin-bottom: 30px;
   top: 90px;
 }
 .breed-adv .btn-container {
@@ -5912,6 +5991,67 @@ footer .cooperation b {
   display: none;
 }
 
+.breed-traits {
+  padding: 15px 15px 0;
+  border-radius: 15px;
+  border: 1px solid #C4C4C4;
+  background-color: #ffffff;
+  margin: 0 0 30px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 30px 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 30px;
+}
+.breed-traits h2 {
+  margin-bottom: 25px;
+  -ms-grid-column-span: 2;
+  grid-column: span 2;
+}
+
+.traits-item {
+  -ms-grid-column-span: 1;
+  grid-column: span 1;
+  position: relative;
+  padding-left: 80px;
+  padding-bottom: 15px;
+  margin-bottom: 0px;
+  border-bottom: 1px solid #C4C4C4;
+}
+.traits-item img {
+  width: 50px;
+  position: absolute;
+  height: 50px;
+  left: 0;
+  top: 0;
+}
+.traits-item:last-child {
+  border: 0;
+}
+
+.breedsNav {
+  border: 2px solid #729EFC;
+  padding: 15px;
+  border-radius: 30px;
+  background-color: #ffffff;
+  position: sticky;
+  top: 70px;
+}
+.breedsNav span {
+  cursor: pointer;
+  text-decoration: none;
+}
+.breedsNav span:hover {
+  color: #729EFC;
+}
+.breedsNav h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+.breedsNav li {
+  margin-bottom: 4px;
+}
+
 @media (max-width: 1280px) {
   .breed-adv-item-img {
     width: 40px;
@@ -5999,6 +6139,9 @@ footer .cooperation b {
   .breed-main .fullscreen .image-gallery-image {
     -o-object-fit: contain;
        object-fit: contain;
+  }
+  .image-gallery-content.fullscreen {
+    height: 100vh;
   }
 }
 /*-----breed-end-----*/

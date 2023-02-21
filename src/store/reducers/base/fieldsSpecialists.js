@@ -1,5 +1,4 @@
 
-
 export default function(){
   return {
     order: [
@@ -8,6 +7,7 @@ export default function(){
       "img",
       "mini_text",
       "maxi_text",
+      "phone",
     ],
     activeCards: {
       type:"switch",
@@ -56,6 +56,13 @@ export default function(){
       wrapClass: "col-12 account-item input-animate-label",
       num: "04",
       maxLength: 110
+    },
+    phone:{
+      type:"phone", 
+      name: "card_phone",  
+      label:"Телефон", 
+      wrapClass: "col-12 account-item  input-animate-label",
+      num:"05"
     },
   }
 

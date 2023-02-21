@@ -6,8 +6,8 @@ const Pages = () => {
 
   const params = useParams();
 
-  let titleForm = generateTitle(params.rubricId, ['Частные услуги', 'Мои компании', 'Мои питомники', 'Мои объявления']);
-  let addBtnText = generateTitle(params.rubricId, ['Создать услугу', 'Добавить компанию', 'Мои питомники', 'Мои объявления']);
+  let titleForm = generateTitle(params.rubricId, ['Частные услуги', 'Мои компании', 'Мои специалисты', 'Мои Объявления']);
+  let addBtnText = generateTitle(params.rubricId, ['Создать услугу', 'Добавить компанию', 'Добавить специалиста', 'Добавить объявления',]);
 
   return (
     <>

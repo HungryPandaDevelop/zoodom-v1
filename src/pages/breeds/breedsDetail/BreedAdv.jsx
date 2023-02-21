@@ -13,6 +13,10 @@ import ico50 from 'front-end/images/adv/strana-proishogdeniya-sobaki.svg';
 import ico9 from 'front-end/images/adv/razmer-sobaki.svg';
 
 
+import ico32 from 'front-end/images/adv/dlitelnost-zhizni-koshka.svg';
+import ico33 from 'front-end/images/adv/potomstvo-koshka.svg';
+import ico34 from 'front-end/images/adv/razmer-koshka.svg';
+
 const BreedAdv = ({ listings }) => {
 
   const renderItemFromTo = (id, title, ico, partsText) => {
@@ -67,34 +71,32 @@ const BreedAdv = ({ listings }) => {
     )
   }
 
+
+
   const renderItem = (id, title, ico) => {
+    // console.log('id', listings[0][id])
     return (<>
-      {listings[0][id] && (
-        <div className="breed-adv-item">
-          <div className="breed-adv-item-img"><img src={ico} alt="" /></div>
-          <div className="breed-adv-item-info">
-            <h3>{title}</h3>
-            <h4>{listings[0][id]}</h4>
+      {
+
+        listings[0][id]?.length > 0 && (
+          <div className="breed-adv-item">
+            <div className="breed-adv-item-img"><img src={ico} alt="" /></div>
+            <div className="breed-adv-item-info">
+              <h3>{title}</h3>
+              {Array.isArray(listings[0][id]) ? (
+                listings[0][id].map((item, index) => (<h4 key={index}>{item}</h4>))
+              ) : <h4>{listings[0][id]}</h4>}
+
+            </div>
           </div>
-        </div>
-      )}</>)
+        )}</>)
   }
 
 
   return (
     <div className="breed-adv">
-      {listings[0].naznachenie && (
-        <div className="breed-adv-item">
-          <div className="breed-adv-item-img"><img src={ico1} alt="" /></div>
-          <div className="breed-adv-item-info">
-            <h3>Назначение</h3>
-            <h4>
-              {(listings[0].naznachenie).join(', ')}
-            </h4>
-          </div>
-        </div>
 
-      )}
+      {renderItem('naznachenie', 'Назначение', ico1)}
 
 
       {renderItemFromTo('stoimost_shhenka', 'Стоимость щенка', ico2, 'тыс. руб.')}
@@ -102,8 +104,10 @@ const BreedAdv = ({ listings }) => {
 
 
       {renderItemFromTo('dlitelnost_zhizni', 'Длительность жизни', ico3, 'лет')}
+      {renderItemFromTo('dlitelnost_zhizni_koshka', 'Длительность жизни', ico32, 'лет')}
 
       {renderItemFromTo('potomstvo', 'Потомство', ico4, 'щенков')}
+      {renderItemFromTo('potomstvo_koshka', 'Потомство', ico33, 'котят')}
 
 
       {renderItemFromToFamale('rost_v_holke', 'Рост в холке', ico5, 'см.')}
@@ -116,6 +120,7 @@ const BreedAdv = ({ listings }) => {
       {renderItem('strana', 'Страна происхождения', ico50)}
       {/* {renderItem('osobennosti_porody', 'Особенности породы', ico3)} */}
       {renderItem('razmer', 'Размер', ico9)}
+      {renderItem('razmer_koshka', 'Размер', ico34)}
 
 
       <div className="btn-container">

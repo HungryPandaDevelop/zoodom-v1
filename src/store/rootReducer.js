@@ -8,16 +8,15 @@ import fieldsAuthorization from 'store/reducers/base/fieldsAuthorization';
 import fieldsRegistration from 'store/reducers/base/fieldsRegistration';
 
 import fieldsAccount from 'store/reducers/base/fieldsAccount';
-import fieldsCards from 'store/reducers/base/fieldsCards.js';
-import fieldsNurseries from 'store/reducers/base/fieldsNurseries';
-import fieldsAnnouncement from 'store/reducers/base/fieldsAnnouncement';
+
 import fieldsCompany from 'store/reducers/base/fieldsCompany';
 import fieldsServices from 'store/reducers/base/fieldsServices';
-
+import fieldsSpecialists from 'store/reducers/base/fieldsSpecialists';
+import fieldsPromo from 'store/reducers/base/fieldsPromo';
 
 import fieldsChat from 'store/reducers/base/fieldsChat';
 import fieldsReviews from 'store/reducers/base/fieldsReviews';
-import fieldsPages from 'store/reducers/base/fieldsPages';
+
 
 
 import fieldsFeedback from 'store/reducers/base/fieldsFeedback';
@@ -40,15 +39,13 @@ const rootReducer = combineReducers({
   fieldsAuthorization: fieldsAuthorization,
   fieldsRegistration: fieldsRegistration,
   fieldsAccount: fieldsAccount,
-  fieldsCards: fieldsCards,
-  fieldsNurseries: fieldsNurseries,
-  fieldsAnnouncement: fieldsAnnouncement,
   fieldsCompany: fieldsCompany,
   fieldsServices: fieldsServices,
+  fieldsSpecialists: fieldsSpecialists,
+  fieldsPromo: fieldsPromo,
   fieldsFeedback: fieldsFeedback,
   fieldsChat: fieldsChat,
   fieldsReviews: fieldsReviews,
-  fieldsPages: fieldsPages,
   russianCities: russianCities,
   accountInfo: infoAccountReducer,
   popupReducer: popupReducer,

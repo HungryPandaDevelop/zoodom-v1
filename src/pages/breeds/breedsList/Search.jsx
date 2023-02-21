@@ -1,34 +1,32 @@
 import { useState, useEffect } from 'react';
 import PreloaderList from 'pages/cabinet/parts/PreloaderList';
 
-const Search = ({ setGetSearchVal }) => {
+const Search = ({ setGetSearchVal, getSerchVal }) => {
 
-  const [searchVal, setSearchVal] = useState('');
+  // const [searchVal, setSearchVal] = useState('');
 
   const [showPreloader, setShowPreloader] = useState(false);
   const onSearch = (e) => {
 
-    setSearchVal(e.target.value)
+    setGetSearchVal(e.target.value)
     // setGetSearchVal(e.target.value)
   }
 
-  const startSearch = () => {
 
-  }
 
   useEffect(() => {
-
+    console.log('log')
     setShowPreloader(true);
     let idStartSearch = setTimeout(() => {
-      startSearch();
-      setShowPreloader(false)
-      setGetSearchVal(searchVal);
-    }, 1500);
 
+      setShowPreloader(false)
+      setGetSearchVal(getSerchVal);
+    }, 1500);
+    // setSearchVal(startValue)
     return (() => {
       clearTimeout(idStartSearch);
     })
-  }, [searchVal]);
+  }, [getSerchVal]);
 
   return (
     <div className="main-full">
@@ -36,9 +34,9 @@ const Search = ({ setGetSearchVal }) => {
         <input
           type="text"
           id="search"
-          className={`input-search input-decorate ${searchVal.length > 0 ? 'input-empty' : ''}`}
+          className={`input-search input-decorate ${getSerchVal.length > 0 ? 'input-empty' : ''}`}
           onChange={(e) => { onSearch(e) }}
-          value={searchVal}
+          value={getSerchVal}
 
         />
         <label htmlFor="search">Быстрый поиск породы</label>

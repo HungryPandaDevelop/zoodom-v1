@@ -21,8 +21,18 @@ import ico21 from 'front-end/images/adv/sobaka-otlichnii-storog.svg';
 import ico22 from 'front-end/images/adv/sobaka-ne-drugit-s-detmi.svg';
 import ico23 from 'front-end/images/adv/sobaka-nabiraet-lishnii-ves.svg';
 
+import ico24 from 'front-end/images/adv/malopodvizhnaya-koshka.svg';
+import ico25 from 'front-end/images/adv/legko-obuchaema-koshka.svg';
+import ico26 from 'front-end/images/adv/podhodit-allergikam-koshka.svg';
+import ico27 from 'front-end/images/adv/giperaktivnaya-koshka.svg';
+import ico28 from 'front-end/images/adv/nabiraet-lishnij-ves-koshka.svg';
+import ico29 from 'front-end/images/adv/mnogo-spit-koshka.svg';
+import ico30 from 'front-end/images/adv/mirolyubiva-koshka.svg';
+import ico31 from 'front-end/images/adv/malo-est-koshka.svg';
 
 
+import Traits from 'pages/breeds/breedsDetail/Traits';
+import PageNav from 'pages/breeds/breedsDetail/PageNav';
 
 
 import ImageGallery from 'react-image-gallery';
@@ -40,15 +50,17 @@ const Breeds = () => {
   //http://zoo-base.sait.website/wp-json/wp/v2/events?slug=conferam-tecum-quam-cuiq
   // /wp-json/custompath/connect?slug=corgi
   useEffect(() => {
-    console.log('params.breedsID', params.breedsID)
+    // console.log('params.breedsID', params.breedsID)
     axios.get(`${siteWp}/wp-json/breeds/detail?slug=${params.breedsID}`).then(res => {
+
       let imagesTemp = res.data[0].images;
-      imagesTemp.map((item) => {
+
+      imagesTemp?.map((item) => {
         item.original = item.full_image_url;
         item.thumbnail = item.thumbnail_image_url;
+      });
 
-      })
-      console.log('res', res.data);
+      // console.log('res', res.data);
       setListings(res.data);
       setLoading(false);
 
@@ -61,11 +73,6 @@ const Breeds = () => {
 
 
   }, [])
-
-
-
-
-
 
 
   const renderItemCheckbox = (obj) => {
@@ -117,6 +124,30 @@ const Breeds = () => {
         case "type14":
           ico = ico23;
           break;
+        case "type15":
+          ico = ico24;
+          break;
+        case "type16":
+          ico = ico25;
+          break;
+        case "type17":
+          ico = ico26;
+          break;
+        case "type18":
+          ico = ico27;
+          break;
+        case "type19":
+          ico = ico28;
+          break;
+        case "type20":
+          ico = ico29;
+          break;
+        case "type21":
+          ico = ico30;
+          break;
+        case "type22":
+          ico = ico31;
+          break;
         default:
           console.log("Sorry.");
       }
@@ -152,34 +183,36 @@ const Breeds = () => {
           <div className="main-grid breed-main">
             <div className="col-9 col-xxl-8 col-lg-7 col-md-8 col-xs-12">
               <div className="breed-slider-wrapper ">
-                <div className="breed-slider-wrapper-desktop">
-                  <ImageGallery
-                    items={listings[0].images}
-                    thumbnailPosition="right"
-                  />
-                </div>
-                <div className="breed-slider-wrapper-mobile">
-                  <ImageGallery
-                    items={listings[0].images}
-                    thumbnailPosition="bottom"
-                  />
-                </div>
+                {listings[0].images && (
+                  <>
+                    <div className="breed-slider-wrapper-desktop">
+                      <ImageGallery
+                        items={listings[0].images}
+                        thumbnailPosition="right"
+                      />
+                    </div>
+                    <div className="breed-slider-wrapper-mobile">
+                      <ImageGallery
+                        items={listings[0].images}
+                        thumbnailPosition="bottom"
+                      />
+                    </div>
+                  </>
+                )}
+
                 <div className="hidden breed-adv-mobile">
 
                   <BreedAdv listings={listings} />
 
                 </div>
               </div>
-              <div className=" breed-description">
-
-                <div className='breed-description-roof'>
-
-
-                </div>
+              <div className=" breed-description" id="point-1">
 
                 <div dangerouslySetInnerHTML={{ __html: listings[0].pervyj_abzac }}></div>
-
-                <div className="breed-description-roof-content">
+                <div id="point-2">
+                  <Traits listings={listings} />
+                </div>
+                <div className="breed-description-roof-content" >
                   <h2>Особенности породы:</h2>
                   {renderItemCheckbox(listings[0].osobennosti_porody)}
                 </div>
@@ -196,7 +229,7 @@ const Breeds = () => {
                   </div>
                 </div>)}
 
-                <div dangerouslySetInnerHTML={{ __html: listings[0].tretij_blok_teksta }}></div>
+                <div id="point-3" dangerouslySetInnerHTML={{ __html: listings[0].tretij_blok_teksta }}></div>
                 {listings[0].interesnyj_fakt_2.title && (<div className="breed-description-roof-content">
                   <h2>
                     <img src={listings[0].interesnyj_fakt_2.img} alt="" />
@@ -205,7 +238,7 @@ const Breeds = () => {
                     {listings[0].interesnyj_fakt_2.content}
                   </div>
                 </div>)}
-                <div dangerouslySetInnerHTML={{ __html: listings[0].chetvertyj_blok_teksta }}></div>
+                <div id="point-4" dangerouslySetInnerHTML={{ __html: listings[0].chetvertyj_blok_teksta }}></div>
 
                 {listings[0].interesnyj_fakt_3.title && (<div className="breed-description-roof-content">
 
@@ -217,13 +250,13 @@ const Breeds = () => {
                   </div>
                 </div>)}
 
-                <div dangerouslySetInnerHTML={{ __html: listings[0].pyatyj_blok_teksta }}></div>
+                <div id="point-6" dangerouslySetInnerHTML={{ __html: listings[0].pyatyj_blok_teksta }}></div>
               </div>
             </div>
             <div className="col-3 col-xxl-4 col-lg-5 col-md-4 col-xs-12 breed-adv-box hidden-xs">
 
               <BreedAdv listings={listings} />
-
+              <PageNav />
             </div>
           </div>
 

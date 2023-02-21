@@ -18,7 +18,12 @@ const MenuPopup = ({ showNavMenu, closePopup }) => {
           <nav className="popup-nav">
             <ul className='ln'>
               <li> <Link to="/" onClick={closePopup}>Главная</Link></li>
-              <li> <Link to={`/porodi`} onClick={closePopup}>Породы</Link></li>
+              <li> Породы
+                <ul>
+                  <li><Link to="/porodi-sobak/">Породы собак</Link></li>
+                  <li><Link to="/porodi-koshki/">Породы кошек</Link></li>
+                </ul>
+              </li>
               {/* <li> <Link to={`/catalog/salon`} onClick={closePopup}>Салоны</Link></li> */}
               {/* <li> <Link to={`/catalog/nurseries`} onClick={closePopup}>Питомники</Link></li> */}
               {/* <li> <Link to={`/catalog/clinics`} onClick={closePopup}>Клиники</Link></li> */}

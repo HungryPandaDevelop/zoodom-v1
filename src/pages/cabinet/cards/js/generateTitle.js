@@ -4,10 +4,16 @@ const generateTitle = (rubricId, arrName)=>{
 
   switch (rubricId) {
     case 'services':
-      titleForm = arrName[0]; // 'Мои объявления';
+      titleForm = arrName[0]; //
       break;
     case 'company':
-      titleForm = arrName[1]; // 'Мои объявления';
+      titleForm = arrName[1]; // 
+      break;
+    case 'specialists':
+      titleForm = arrName[2]; // 
+      break;
+    case 'promo':
+      titleForm = arrName[3]; // 
       break;
     default:
       return 'default text'

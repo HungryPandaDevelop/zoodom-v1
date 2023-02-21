@@ -36,10 +36,10 @@ const CabinetSidebar = ({ userInfo }) => {
     ];
   } else {
     NameMass = [
-      ['Частные услуги', 'services', 'cards-nav'],
       ['Мои компании', 'company', 'cards-nav'],
-      ['Мои объявления', 'announcement', 'cards-nav'],
-      ['Мои отзывы', 'reviews', 'cards-nav'],
+      ['Мои услуги', 'services', 'cards-nav'],
+      ['Мои специалисты', 'specialists', 'cards-nav'],
+      ['Мои объявления', 'promo', 'cards-nav'],
       ['Избранное', 'liked', 'favorites-nav'],
       ['Спрятанное', 'hidden', 'hidden-nav'],
       ['Чат', 'chat', 'chat-nav'],
@@ -48,9 +48,6 @@ const CabinetSidebar = ({ userInfo }) => {
   }
 
 
-  const adminMass = [
-    ['Страницы', 'pages', ''],
-  ]
 
   return (
     <>
@@ -82,16 +79,6 @@ const CabinetSidebar = ({ userInfo }) => {
                 </li>
               )
               )}
-            {userInfo.admin === 'true' && adminMass.map((item, index) => (
-              <li key={index} >
-                <Link className={`${item[2]} ${pathMathRoute('/cabinet/' + item[1]) ? 'active' : ''}`} to={`/cabinet/${item[1]}`}>
-                  <i></i>
-                  <span>{item[0]}</span>
-                </Link>
-              </li>
-            )
-            )}
-
           </ul>
         </div>
 

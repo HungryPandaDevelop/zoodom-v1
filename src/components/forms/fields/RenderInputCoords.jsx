@@ -24,7 +24,7 @@ const TemplateCoords = (props) => {
 
     setTimeout(() => {
       const { ymaps } = window
-      const suggest = new ymaps.SuggestView('suggest')
+      const suggest = new ymaps.SuggestView(input.name)
 
       suggest.events.add('select', (e) => {
         const val = String(e.get('item').value.trim())
@@ -53,21 +53,23 @@ const TemplateCoords = (props) => {
   return (
     <div className='map-input'>
       {num && <i className="num-offset">{num}</i>}
-      {label && <label className="col-12"><b>{label}</b><span>{labelSecond}</span></label>}
+
       <input
         ref={originRef}
-        id="suggest"
+        id={input.name}
         type="text"
-        className="input-decorate"
+        className={`input-decorate  ${input.value.length > 0 ? 'input-empty' : ''}`}
         onChange={checkEpmty}
         autoComplete="off"
+
       />
+      {label && <label htmlFor={input.name} className="col-12"><b>{label}</b><span>{labelSecond}</span></label>}
       <input
         type="text"
         ref={elRef}
         {...input}
         value={custVal}
-        className="hidden-field"
+        className={`hidden-field`}
         autoComplete="off"
       />
 

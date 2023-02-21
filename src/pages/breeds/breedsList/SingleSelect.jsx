@@ -2,8 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 
 
 
-const SingleSelect = ({ topic, options, className, searchValSelect, setSearchValSelect, idSelect }) => {
-
+const SingleSelect = ({ topic, options, className, searchValSelect, setSearchValSelect, idSelect, startName }) => {
   const [open, setOpen] = useState(false);
   const [select, setSelect] = useState('Все');
 
@@ -11,6 +10,21 @@ const SingleSelect = ({ topic, options, className, searchValSelect, setSearchVal
   const elRefId = useRef();
 
   useEffect(() => {
+
+    let objToArr = [];
+
+    for (let key in options) {
+      objToArr.push({ label: options[key], value: key })
+    };
+
+    objToArr.map((item) => {
+      if (item.value === startName) {
+        startName && setSelect(item.label);
+      };
+    });
+
+    // console.log(startName, options, objToArr)
+
     const hideByBody = (e) => {
 
       if (elRef.current && !elRef.current.contains(e.target)) {
@@ -29,14 +43,15 @@ const SingleSelect = ({ topic, options, className, searchValSelect, setSearchVal
 
 
   const onSelectedChange = (value) => {
-
+    //console.log('set')
     setSelect(value.label);
 
     if (value.label === 'Все') {
       setSearchValSelect({ ...searchValSelect, [elRefId.current.dataset.id]: '' });
     }
     else {
-      setSearchValSelect({ ...searchValSelect, [elRefId.current.dataset.id]: value.label });
+      setSearchValSelect({ ...searchValSelect, [elRefId.current.dataset.id]: value.value });
+      console.log(searchValSelect)
     }
 
   }
@@ -46,10 +61,9 @@ const SingleSelect = ({ topic, options, className, searchValSelect, setSearchVal
 
     let objToArr = [{ label: 'Все', value: 'type0' }];
 
-    let count = 0;
     for (let key in options) {
-      count++;
-      objToArr.push({ label: options[key], value: 'value_' + count })
+
+      objToArr.push({ label: options[key], value: key })
     }
 
     return objToArr.map((li) => {
@@ -60,6 +74,7 @@ const SingleSelect = ({ topic, options, className, searchValSelect, setSearchVal
         <li
           key={li.value}
           onClick={() => { onSelectedChange(li) }}
+          data-value={li.value}
         >
           {li.label}
         </li>

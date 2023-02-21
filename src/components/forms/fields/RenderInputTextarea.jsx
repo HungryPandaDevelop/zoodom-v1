@@ -32,15 +32,17 @@ const TempateInputTextarea = (props) => {
   return (
     <>
       {num && <i className="num-offset">{num}</i>}
-      {label && <label><b>{label}</b></label>}
-      {labelSecond && <div className='hint-input-file'><i><span>{labelSecond}</span></i></div>}
+
+
       <textarea
         {...input}
+        id={input.name}
         placeholder={placeholder}
-        className={`input-decorate ${checkErrorSubmit && error && 'error-input'}`}
+        className={`input-decorate ${checkErrorSubmit && error && 'error-input'} ${input.value.length > 0 ? 'input-empty' : ''}`}
         maxLength={maxLength}
       >
       </textarea>
+      {label && <label htmlFor={input.name}><b>{label}</b>{labelSecond && <div className='hint-input-file'><i><span>{labelSecond}</span></i></div>}</label>}
       {(checkErrorSubmit && (error && <span>{error}</span>))}
     </>
   );
