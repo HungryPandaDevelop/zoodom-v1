@@ -10,7 +10,7 @@ const Nav = () => {
             <li><Link to="/porodi-koshki/">Породы Кошек</Link></li>
           </ul>
         </li>
-        <li> <Link to="/catalog/nurseries/">Питомники</Link></li>
+        <li> <Link to="/catalog/company/">Все компании</Link></li>
       </ul>
       <ul className="ln nav-header">
         <li> <Link to="/contacts/">Контакты</Link></li>

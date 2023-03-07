@@ -37,7 +37,7 @@ const Catalog = ({
 
   useEffect(() => {
 
-    getListing(params.catagoryName).then(res => {
+    getListing('company').then(res => {
 
       let data = filterMain(listingSearch, res);
 
@@ -65,7 +65,7 @@ const Catalog = ({
       break;
 
     default:
-      titleCategory = "Категория не выбрана"
+      titleCategory = "Все компании"
   }
 
 
